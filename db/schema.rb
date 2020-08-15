@@ -19,9 +19,8 @@ ActiveRecord::Schema.define(version: 2020_08_15_181331) do
     t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.string "user_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "books_lists", id: false, force: :cascade do |t|
@@ -66,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_181331) do
   end
 
   add_foreign_key "books", "genres"
-  add_foreign_key "books", "users"
   add_foreign_key "lists", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"

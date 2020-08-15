@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to 'sessions#welcome'
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
   resources :genres
   resources :reviews
   resources :books

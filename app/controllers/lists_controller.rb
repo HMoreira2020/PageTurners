@@ -14,7 +14,7 @@ class ListsController < ApplicationController
         if @list.save 
             redirect_to user_path(current_user)
         else 
-            render :new, alert: "List name required"
+            render :new, alert: "Title required"
         end 
     end
     

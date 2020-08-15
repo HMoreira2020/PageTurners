@@ -6,8 +6,9 @@ class Book < ApplicationRecord
     has_many :reviews 
     has_many :users, through: :reviews #users that have reviewed it 
     
+    validates :title, :author, :synopsis, presence: true 
     
 
-    #add validations 
-    #title, author, synopsis 
+    #need a find_or_create_by method to prevent duplicate books being added to database
+   
 end

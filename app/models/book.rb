@@ -9,6 +9,6 @@ class Book < ApplicationRecord
     validates :title, :author, :synopsis, presence: true 
     
 
-    #need a find_or_create_by method to prevent duplicate books being added to database
+   
    
 end

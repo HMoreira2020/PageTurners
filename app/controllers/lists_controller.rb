@@ -1,18 +1,19 @@
 class ListsController < ApplicationController
+    before_action :get_user 
     before_action :set_list, only: [:show, :edit, :update, :destroy]
 
     def index
-        @lists = List.all 
+        @lists = @user.lists 
     end 
 
     def new
-        @list = List.new 
+        @list = @user.lists.build 
     end
 
     def create
-        @list = List.new(list_params)
+        @list = @user.lists.build(list_params)
         if @list.save 
-            redirect_to user_path(current_user)
+            redirect_to user_lists_path(@user), notice: 'List was successfully created.'
         else 
             render :new, alert: "Title required"
         end 
@@ -26,9 +27,8 @@ class ListsController < ApplicationController
     end
 
     def update
-        @list.update(list_params)
-        if @list.save 
-            redirect_to list_path(@list)
+        if @list.update(list_params) 
+            redirect_to user_list_path(@user), notice: 'List was successfully updated.'
         else 
             render :edit, alert: "Title required"
         end
@@ -36,18 +36,22 @@ class ListsController < ApplicationController
 
     def destroy 
         @list.destroy 
-        redirect_to user_path(current_user)
+        redirect_to user_lists_path(@user), notice: 'List was successfully destroyed.'
     end 
 
     private 
 
+    def get_user 
+        @user = User.find(params[:user_id])
+    end 
+
     def list_params
-        params.require(list).permit(:title)
+        params.require(list).permit(:title, :user_id)
     end 
 
 
     def set_list 
-        @list = List.find_by(id: params[:id])
+        @list = @user.lists.find_by(id: params[:id])
     end 
 
 end

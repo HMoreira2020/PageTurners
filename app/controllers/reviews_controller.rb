@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+    before_action :set_review, only: [:show, :edit, :update, :destroy]
+
     def index
     end 
 
@@ -20,4 +22,16 @@ class ReviewsController < ApplicationController
 
     def destroy
     end 
+
+    private 
+
+    def reviews_params
+        params.require(:review).permit(:title, :stars, :content)
+    end 
+
+
+    def set_review 
+        @review = Review.find_by(id: params[:id])
+    end 
+ 
 end

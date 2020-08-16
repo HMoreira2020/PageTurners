@@ -1,0 +1,6 @@
+<h1><%=@genre.name%> Books</h1>
+<% @genre.books.each do |book| %>
+    <%= link_to book.title, book_path(book) %> by <%= book.author %><br>
+    <strong>Synopsis: </strong> <%= book.synopsis %> 
+<%end%> 
+

@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
     def new
         @user = User.find_by(id: params[:user_id])
-        @list = @user.lists.build(list_params)
+        @list = @user.lists.build
     end
 
     def create 
@@ -61,7 +61,7 @@ class ListsController < ApplicationController
     end 
 
     def list_params
-        params.require(:list).permit(:title, :user_id, book_attributes: [:title, :author, :synopsis, :genre_id])
+        params.require(:list).permit(:title, :user_id, book_ids = [], book_attributes: [:title, :author, :synopsis, :genre_id])
     end 
 
 

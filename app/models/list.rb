@@ -5,4 +5,10 @@ class List < ApplicationRecord
   #validations for title
   validates :title, presence: true 
 
+  def book_ids=(ids)
+    ids.each do |id|
+      book = Book.find(id)
+      self.books << book 
+    end 
+  end 
 end

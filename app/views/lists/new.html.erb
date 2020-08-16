@@ -1,12 +1,12 @@
 <h1>Create a New List</h1>
-<%= form_for @list do |f| %> 
+<%= form_with (model: [@user, list], local: true) do |f| %> 
     <%= f.label :title %> 
     <%= f.text_field :title %><br>
 
     <%= f.label :books %> 
     <%= f.collection_select :book_id, Book.all, :name, :name  %><br>
 
-    <%= f.fields_for :book do |book_fields| %>
+    <%= f.fields_for :books do |book_fields| %>
         Title: <%= book_fields.text_field :title %>
         Author: <%= book_fields.text_field :author %>
         Synopsis: <%= book_fields.text_area :synopsis %>
@@ -16,4 +16,3 @@
     <%= f.submit %>
 
 <%end%>
-

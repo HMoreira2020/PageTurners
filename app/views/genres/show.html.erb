@@ -1,6 +1,10 @@
 <h1><%=@genre.name%> Books</h1>
+<% if @genre.books.empty? %>
+    There are no Books in this Genre yet 
+<%else%>
 <% @genre.books.each do |book| %>
     <%= link_to book.title, book_path(book) %> by <%= book.author %><br>
     <strong>Synopsis: </strong> <%= book.synopsis %> 
 <%end%> 
+<%end%>
 

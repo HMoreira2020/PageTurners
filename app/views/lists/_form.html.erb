@@ -3,8 +3,6 @@
     <%= f.label :title %> 
     <%= f.text_field :title %><br>
 
-    <%= f.label :books %> 
-    <%= f.collection_select :book_id, Book.all, :id, :name  %><br>
 
     <%= f.fields_for :books do |book_fields| %>
         Title: <%= book_fields.text_field :title %>

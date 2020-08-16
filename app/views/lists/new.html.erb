@@ -1,18 +1,18 @@
 <h1>Create a New List</h1>
-<%= form_with (model: [@user, list], local: true) do |f| %> 
-    <%= f.label :title %> 
-    <%= f.text_field :title %><br>
+<%= form_for [@user, List.new] do |f| %> 
+    <%= f.label :title, "List Title" %> 
+    <%= f.text_field :title %><br><br> 
 
-    <%= f.label :books %> 
-    <%= f.collection_select :book_id, Book.all, :name, :name  %><br>
-
+    Add a New Book to Your List: <br>
     <%= f.fields_for :books do |book_fields| %>
-        Title: <%= book_fields.text_field :title %>
-        Author: <%= book_fields.text_field :author %>
-        Synopsis: <%= book_fields.text_area :synopsis %>
+        Book Title: <%= book_fields.text_field :title %><br>
+        Author: <%= book_fields.text_field :author %><br>
+        Synopsis: <%= book_fields.text_area :synopsis %><br>
         Genre: <%= book_fields.collection_select :genre_id, Genre.all, :id, :name %>
     <%end %> 
+
 
     <%= f.submit %>
 
 <%end%>
+

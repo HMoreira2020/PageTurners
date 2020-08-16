@@ -1,1 +1,18 @@
 <h1> this is the New list form partial to render</h1> 
+<%= form_for list do |f| %> 
+    <%= f.label :title %> 
+    <%= f.text_field :title %><br>
+
+    <%= f.label :books %> 
+    <%= f.collection_select :book_id, Book.all, :name, :name  %><br>
+
+    <%= f.fields_for :book do |book_fields| %>
+        Title: <%= book_fields.text_field :title %>
+        Author: <%= book_fields.text_field :author %>
+        Synopsis: <%= book_fields.text_area :synopsis %>
+        Genre: <%= book_fields.collection_select :genre_id, Genre.all, :id, :name %>
+    <%end %> 
+
+    <%= f.submit %>
+
+<%end%>

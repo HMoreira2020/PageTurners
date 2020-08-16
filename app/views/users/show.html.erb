@@ -1,1 +1,10 @@
-<h1>Welcome <%= @user.username %>, You have signed in!</h1> 
+<h1>Welcome <%= @user.username %>, You are signed in!</h1> 
+<% if @user.lists.empty? %>
+    You have no lists yet.
+    <%= link_to "Create a Book List", new_user_list_path %>
+<%else%>
+<% @user.lists.each do |list| %>
+    <% list.name %>
+    <% list.books %> 
+<% end %> 
+<%end%>

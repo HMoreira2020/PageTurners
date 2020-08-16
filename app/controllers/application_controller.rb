@@ -1,15 +1,11 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    helper_method :current_user, :require_admin, :logged_in?, :require_login 
+    helper_method :current_user, :logged_in?, :require_login 
   
  
 
   private
 
-  
-  def require_admin 
-    require head(:forbidden) unless current_user.admin 
-  end 
 
   def logged_in? 
     current_user != nil 

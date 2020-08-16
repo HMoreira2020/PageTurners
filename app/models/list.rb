@@ -4,5 +4,5 @@ class List < ApplicationRecord
   has_many :books, through: books_lists 
   #validations for title
   validates :title, presence: true 
-  # accepts_nested_attributes_for_books ? does this go here? 
+  accepts_nested_attributes_for_books
 end

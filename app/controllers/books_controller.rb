@@ -31,9 +31,8 @@ class BooksController < ApplicationController
     end
 
     def update
-        @book.update(books_params)
-        if @book.save 
-            redirect_to book_path(@book)
+        if @book.update(book_params) 
+            redirect_to book_path(@book), alert: "Book successfully updated"
         else 
             render :edit, alert: "All fields required"
         end

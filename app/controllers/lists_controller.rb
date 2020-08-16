@@ -61,7 +61,7 @@ class ListsController < ApplicationController
     end 
 
     def list_params
-        params.require(list).permit(:title, :user_id, book_attributes: [:title, :author, :synopsis, :genre_id)
+        params.require(:list).permit(:title, :user_id, book_attributes: [:title, :author, :synopsis, :genre_id])
     end 
 
 

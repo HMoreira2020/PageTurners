@@ -1,17 +1,2 @@
 <h1>Add a New Book</h1>
-<%= form_for @book do |f| %> 
-    <%= f.label :title %> 
-    <%= f.text_field :title %><br>
-
-    <%= f.label :author %> 
-    <%= f.text_field :author %><br>
-
-    <%= f.label :synopsis %> 
-    <%= f.text_field :synopsis %><br> 
-    
-    <%= f.label :genre %> 
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %><br> 
-
-    <%= f.submit %>
-
-<%end%>
+<%= render partial: "form", locals: {book}: @book} %> 

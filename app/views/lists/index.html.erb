@@ -8,6 +8,7 @@
     <h3>by: <%= link_to list.user.name, user_lists_path(list.user) %></h3>
         <%= list.books.each do |book| %>
         <%= link_to book.title, book_path(book) %> by <%= book.author %> 
+        
 <%end%>
 <%end%>
 <%end%>

@@ -3,8 +3,9 @@
     You have no lists yet.
     <%= link_to "Create a Book List", new_user_list_path %>
 <%else%>
+<h2>Your Lists</h2>
 <% @user.lists.each do |list| %>
-    <% list.name %>
-    <% list.books %> 
+    <%= link_to list.title, user_list_path(list) %>
+    
 <% end %> 
 <%end%>

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-    before_action :get_user, only: [:create] 
+    before_action :get_user
     before_action :set_list, only: [:show, :edit, :update, :destroy]
 
     def index #conditional for whether user navigates to /users/:user_id/lists or /lists
@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
     def new
         @user = User.find_by(id: params[:user_id])
-        @list = @user.lists.build
+        @list = List.new(user_id: params[:book_id])
     end
 
     def create 

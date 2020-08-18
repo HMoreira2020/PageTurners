@@ -10,22 +10,17 @@ class SessionsController < ApplicationController
 
     def create
         if request.env["omniauth.auth"][:provider] == 'facebook'
-            @user = User.find_or_create_by(email: auth[:info][:email]) do |u|
-                u.name = auth['info']['name']
-                u.username = auth['info']['email']
-                u.image = auth['info']['image']
-                u.password = SecureRandom.hex
-            end
-              session[:user_id] = @user.id
-              redirect_to user_path(@user)
+            @user = User.create_by_facebook_omniauth(auth)
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
         else
             @user = User.find_by(username: params[:user][:username])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else 
-            flash[:alert] = "Login is incorrect"
-            redirect_to login_path
+                flash[:alert] = "Login is incorrect"
+                redirect_to login_path
             end 
         end 
     end

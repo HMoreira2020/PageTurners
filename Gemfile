@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pry'
 
 gem "valid_email2"
+gem 'thin'
 
 
 group :development, :test do

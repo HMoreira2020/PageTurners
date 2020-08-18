@@ -12,6 +12,10 @@ class User < ApplicationRecord
     has_secure_password 
 
    
-
+    def self.create_by_facebook_omniauth(auth)
+        self.where(email: auth[:info][:email]).first_or_create do |u|
+          u.password = SecureRandom.hex
+        end
+    end
     
 end

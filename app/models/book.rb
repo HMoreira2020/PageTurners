@@ -7,6 +7,7 @@ class Book < ApplicationRecord
     has_many :reviewers, through: :reviews, source: :user #book.reviewers users that have reviewed it 
     
     validates :title, :author, :synopsis, presence: true 
+    validates :title, uniqueness: { case_sensitive: false }
 
 
     

@@ -1,4 +1,10 @@
-<h1>Welcome <%= @user.username %>, You are signed in!</h1> 
+<% if session[:user_id] %>
+    <h1>Welcome <%= @user.username %>, You are signed in!</h1> 
+    <img src="<%= @user.image %>">
+<%else%> 
+    <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
+
 <% if @user.lists.empty? %>
     You have no lists yet.
     <%= link_to "Create a Book List", new_user_list_path %>

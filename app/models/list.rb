@@ -18,7 +18,7 @@ class List < ApplicationRecord
       self.books << book
     end
   end
-  
 
+  
   
 end

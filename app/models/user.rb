@@ -16,9 +16,12 @@ class User < ApplicationRecord
         self.where(email: auth[:info][:email]).first_or_create do |u|
             u.name = auth['info']['name']
             u.image = auth['info']['image']
+            u.uid = auth['info']['uid']
             u.password = SecureRandom.hex
         end
     end
+
+   
     
 
 end

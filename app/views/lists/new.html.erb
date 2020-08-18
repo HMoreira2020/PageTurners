@@ -2,6 +2,10 @@
 <%= form_for [@user, List.new] do |f| %> 
     <%= f.label :title, "List Title" %> 
     <%= f.text_field :title %><br><br> 
+    
+    Add Books to Your List:
+    <%= f.collection_select :book_ids, Book.all, :id, :title %><br><br>  
+
 
     Add a New Book to Your List: <br>
     <%= f.fields_for :books do |book_fields| %>

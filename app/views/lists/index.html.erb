@@ -1,15 +1,1 @@
-<h1>Your lists</h1>
-<% if @user.lists.empty? %>
-    You have no lists yet.
-    <%= link_to "Create a Book List", new_user_list_path %>
-<%else%>
- <%= @lists.each do |list| %> 
-    <h2><%= list.title %></h2>
-    <h3>by: <%= link_to list.user.name, user_lists_path(list.user) %></h3>
-      
-        
-<%end%>
-<%end%>
-<%end%>
-
-<%= link_to "New List", new_user_list_path(@user, @list) %>
+All users lists index page 

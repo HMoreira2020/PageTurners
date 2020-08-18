@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     def create 
         @list = @user.lists.build(list_params)
         if @list.save 
-            redirect_to user_lists_path(@user), notice: 'List was successfully created.'
+            redirect_to user_path(@user), notice: 'List was successfully created.'
         else 
             render :new, alert: "Title required"
         end 
@@ -27,15 +27,6 @@ class ListsController < ApplicationController
     
 
     def show #conditional for whether user navigates to /users/:user_id/lists/:id or /lists/:id
-        if params[:user_id]
-            @user = User.find_by(id: params[:user_id]) 
-            @list = @user.lists.find_by(id: params[:id])
-            if @list.nil?
-                redirect_to user_lists_path(@user), alert: "List not found"
-            end 
-        else 
-            @list = List.find_by(id: params[:id])
-        end
     end 
 
     def edit

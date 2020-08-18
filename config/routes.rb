@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   resources :books
  
   resources :users do 
-    resources :lists, only: [:show, :index, :new, :create]
+    resources :lists, only: [:show, :new, :create]
   end 
 
-  resources :lists, only: [:edit, :update, :destroy]
+  resources :lists, only: [:index, :edit, :update, :destroy]
   
 
 

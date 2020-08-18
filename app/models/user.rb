@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     has_many :reviews, dependent: :destroy #that they created
     has_many :lists, dependent: :destroy #that they created 
-    has_many :reviewed_books, through: :reviews, source: :book #that they have reviewed
-    has_many :books, through: :lists #that they have created 
+    has_many :reviewed_books, through: :reviews, source: :book #that they have reviewed user.reviewed_books
+    has_many :books, through: :lists #that they have created user.books will refer to their books on their lists
     
     #add validations name, email username, password 
     validates :name, uniqueness: true, presence: true 
@@ -11,9 +11,7 @@ class User < ApplicationRecord
 
     has_secure_password 
 
-   def add_book_to_list()
-   end 
-
+   
 
     
 end

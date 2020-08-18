@@ -17,7 +17,6 @@ class ListsController < ApplicationController
     end
 
     def create 
-        raise params 
         @list = @user.lists.build(list_params)
         if @list.save 
             redirect_to user_lists_path(@user), notice: 'List was successfully created.'

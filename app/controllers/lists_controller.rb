@@ -13,7 +13,7 @@ class ListsController < ApplicationController
 
     def new
         @user = User.find_by(id: params[:user_id])
-        @list = List.new(user_id: params[:book_id])
+        @list = List.new(user_id: params[:user_id])
     end
 
     def create 

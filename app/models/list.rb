@@ -3,7 +3,7 @@ class List < ApplicationRecord
   has_many :books
   #validations for title
   validates :title, presence: true, uniqueness: { scope: :user_id,
-  message: "title already exists in your lists" }
+  message: "You already have a list with this title." }
 
   
 

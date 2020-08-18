@@ -1,5 +1,9 @@
-<% if session[:user_id] %>
-    <h1>Welcome <%= @user.username %>, You are signed in!</h1> 
+<% if logged_in? %>
+    <% if @user.username != nil %>
+        <h1>Welcome <%= @user.username %>, You are signed in!</h1>
+    <%else%>
+        <h1>Welcome <%= @user.name %>, You are signed in!</h1>
+    <%end%>
     <img src="<%= @user.image %>">
 <%else%> 
     <%= link_to('Log in with Facebook!', '/auth/facebook') %>

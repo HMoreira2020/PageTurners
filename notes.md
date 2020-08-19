@@ -1,16 +1,17 @@
 
 Notes:
-- [ ]  add books to list
+- [ ]  HOW TO ADD BOOKS TO LISTS 
 - [ ]  implement google books api 
+- [ ]  use google books api for book searches, displaying images, adding books to list
 - [ ]  nest reviews under books
 - [ ]  reviews new, create, edit, update, destroy 
-- [ ]  users new, create, edit, update, destroy
-- [ ]  sessions new, create, destroy
-- [ ] 
-- [x]  Books index, new, create, edit, update 
-- [ ]  lists index, new, create, edit, update 
-- [ ]  Add styling 
+- [x]  users new, create, edit, update
+- [x]  sessions new, create, destroy
 - [ ]  
+- [x]  Books index, new, create, edit, update 
+- [x]  lists index, new, create, edit, update 
+- [ ]  Add styling 
+- [ ]  Add images for books 
 - [ ] 
 - [ ] 
 - [ ]  

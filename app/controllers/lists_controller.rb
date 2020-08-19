@@ -13,8 +13,7 @@ class ListsController < ApplicationController
 
     
     def new
-        @list = List.new
-        #@book = @list.books.build
+        list = List.new
     end
 
     def create 
@@ -56,7 +55,6 @@ class ListsController < ApplicationController
     def list_params
         params.require(:list).permit(:title, :user_id)
     end 
-
 
     def set_list 
         @list = List.find_by(id: params[:id])

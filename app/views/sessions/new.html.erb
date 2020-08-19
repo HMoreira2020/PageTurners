@@ -10,5 +10,10 @@
 
     <%= f.submit "Log In" %>
     
-    <% end %>
-    
+<% end %><br>
+
+<div>
+<% if !logged_in?%>
+    <%= link_to('Log in with Facebook', '/auth/facebook') %>
+<%end%>
+</div>

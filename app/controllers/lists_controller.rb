@@ -31,6 +31,7 @@ class ListsController < ApplicationController
     end 
 
     def edit
+        
     end
 
     def update
@@ -43,7 +44,7 @@ class ListsController < ApplicationController
 
     def destroy 
         @list.destroy 
-        redirect_to user_lists_path(@user), notice: 'List was successfully destroyed.'
+        redirect_to user_lists_path(current_user), notice: 'List was successfully destroyed.'
     end 
 
     private 

@@ -1,9 +1,20 @@
 <h1>Create a New List</h1>
-<%= form_for [@user, List.new] do |f| %> 
-    <%= f.label :title, "List Title" %> 
-    <%= f.text_field :title %><br><br>
 
-    <%= f.submit %>
+<% if @list.errors.any? %>
+<div id="error_explanation">
+  <h4><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h4>
+  <ul>
+  <% @list.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
 
-<%end%>
-
+<%= form_for [@user, @list] do |f| %> 
+        <%= f.label :title, "List Title" %> 
+        <%= f.text_field :title %><br><br>
+    
+        <%= f.submit %>
+    
+    <%end%>

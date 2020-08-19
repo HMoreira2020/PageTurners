@@ -1,8 +1,22 @@
 <h1> this is the New list form partial to render</h1> 
-<%= form_with (model: [@user, list], local: true) do |f| %> 
-    <%= f.label :title %> 
-    <%= f.text_field :title %><br>
+<%= form_for [user, list] do |f| %> 
 
-    <%= f.submit %>
-
-<%end%>
+    <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+    
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+    
+        <%= f.label :title, "List Title" %> 
+        <%= f.text_field :title %><br><br>
+    
+        <%= f.submit %>
+    
+    <%end%>
+    

@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :email, uniqueness: true, presence: true, 'valid_email_2/email': true
 
     has_secure_password 
-
+    has_one_attached :image
    
     def self.create_by_facebook_omniauth(auth)
         self.where(email: auth[:info][:email]).first_or_create do |u|

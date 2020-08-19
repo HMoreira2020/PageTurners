@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/amazon/callback' => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   resources :genres
   resources :reviews
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :lists, only: [:index, :edit, :update, :destroy]
   
-
+ 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

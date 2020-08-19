@@ -10,17 +10,12 @@ class BooksController < ApplicationController
     end
 
     def create
-        @book = Book.find_or_create_by(title: params[:title])
-        if @book 
-            redirect_to book_path(@book), :alert => "This book is already in our database"
+        @book = Book.new(book_params)
+        if @book.save 
+            redirect_to book_path(@book), message: "Book successfully created"
         else 
-            @book = Book.new(book_params)
-            if @book.save 
-                redirect_to book_path(@book)
-            else 
-                render :new, :alert => "All fields required"
-            end 
-        end 
+            render :new
+        end  
     end
 
 

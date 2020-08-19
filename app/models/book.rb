@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
-    belongs_to :genre 
-    belongs_to :user #the user that created it 
+    belongs_to :genre #the user that created it 
     has_many :books_lists
     has_many :lists, through: :books_lists #on different users lists - how do I set this up without books lists?
     has_many :users, through: :lists #book.users

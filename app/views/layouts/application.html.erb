@@ -36,8 +36,9 @@
     </div><!--/.nav-collapse -->
   </div>
 </div>
-<%= alert %>
-<%= notice %>
+<% flash.each do |k, v| %>
+  <div class=<%= k %> ><%= v %></div>
+<% end %>
 
 <!-- content -->
 <div class="container"  role="main">

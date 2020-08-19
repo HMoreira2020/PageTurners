@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-    before_action :get_user
+    before_action :get_user, only: [:index, :new, :create, :show]
     before_action :set_list, only: [:show, :edit, :update, :destroy]
 
     def index #conditional for whether user navigates to /users/:user_id/lists or /lists
@@ -27,7 +27,7 @@ class ListsController < ApplicationController
     end
     
 
-    def show #conditional for whether user navigates to /users/:user_id/lists/:id or /lists/:id
+    def show 
     end 
 
     def edit
@@ -36,7 +36,7 @@ class ListsController < ApplicationController
 
     def update
         if @list.update(list_params) 
-            redirect_to user_list_path(@user), notice: 'List was successfully updated.'
+            redirect_to user_list_path(@list.user_id, @list), notice: 'List was successfully updated.'
         else 
             render :edit, alert: "Title required"
         end
@@ -54,7 +54,7 @@ class ListsController < ApplicationController
     end 
 
     def list_params
-        params.require(:list).permit(:title, :user_id, book_ids = [], books_attributes: [:title, :author, :synopsis, :genre_id])
+        params.require(:list).permit(:title, :user_id)
     end 
 
 

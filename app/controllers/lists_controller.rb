@@ -27,6 +27,7 @@ class ListsController < ApplicationController
     
 
     def show 
+        @books = @list.books
     end 
 
     def edit

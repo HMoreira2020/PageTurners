@@ -2,7 +2,12 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     def index
-        @books = Book.all 
+        search = params[:search] 
+        if params[:search].blank? 
+            @books = Book.all
+        else 
+            @books = Book.search(search)
+        end 
     end 
 
     def new
@@ -12,7 +17,7 @@ class BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         if @book.save 
-            redirect_to book_path(@book), message: "Book successfully created"
+            redirect_to book_path(@book), notice: "Book successfully created"
         else 
             render :new
         end  
@@ -37,7 +42,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :synopsis, :genre_id)
+        params.require(:book).permit(:title, :author, :synopsis, :genre_id, :search)
     end 
 
 

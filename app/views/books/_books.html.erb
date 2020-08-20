@@ -1,0 +1,13 @@
+
+
+<div>
+  <strong>Title: </strong><%= link_to book.title, book_path(book) %><br>
+  by <%= book.author %><br><br>
+  Synopsis: <%= book.synopsis %><br>
+  Genre:  <%= link_to book.genre.name, genre_path(book.genre) %><br>
+  <%= link_to "See more", book_path(book) %><br>
+  <%= link_to "Edit", edit_book_path(book) %>
+</div><br>
+  
+ 
+

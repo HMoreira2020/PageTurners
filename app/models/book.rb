@@ -13,5 +13,30 @@ class Book < ApplicationRecord
     
 
    
-   
+    def self.search(search)
+        search.blank? ? self.all : self.all.where("lower(title) LIKE ?", "%#{search}%")
+    end
+
+    def already_on_list?(list, book)
+        list.include?(book) ? true : false 
+    end 
+
+    def add_to_list(list, book)
+        if !already_on_list?(list, book)
+            list.books.build(book_params)
+        else 
+            "This book has already been added to your list" 
+        end 
+    end 
+
+    def self.sort_by_title
+    end 
+
+    def self.sort_by_author 
+    end 
+
+    def self.sort_by_ratings 
+    end 
+
+
 end

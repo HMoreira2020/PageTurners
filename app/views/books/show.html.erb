@@ -7,3 +7,9 @@ Genre: <%=@book.genre.name%></h4><br>
     <p>Synopsis:<br>
     <%=@book.synopsis%></p>
 </div>
+
+
+<%=form_for @book do |f| %>
+    <%= f.collection_select :lists, current_user.lists, :id, :title, {:prompt => 'Add this Book to a List' } %> 
+    <%= f.submit "Add" %>
+    <%end%> 

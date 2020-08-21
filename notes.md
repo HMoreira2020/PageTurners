@@ -14,15 +14,15 @@ Notes:
 - [ ]  Add images for books 
 - [x]  user can create new lists
 - [ ]  User can delete a book from the list on the list show page 
-- [ ]  
-- [ ] 
+- [x]  user can delete a review they created
+- [ ]  put a books reviews on a books show page and make sure links are changed accordingly 
 - [ ] 
 - [ ]  
 - [ ] 
 
 Homepage
 -search for books 
-    -returns list of books that match the search (stored in @search_results)
+    -returns list of books that match the search (stored in)
     -each book has link to it's show page (iterated through @search results and display books with link to show)
 -browse books (by genre, highest rated, by author)
 return a list of books

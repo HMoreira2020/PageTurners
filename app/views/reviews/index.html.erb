@@ -8,7 +8,11 @@ by <%= @book.author %><br>
     <strong><%= review.user.username %></strong> rated it <%= review.stars %> stars: <br> 
     Review: <%= review.title %><br>
     <%= review.content %><br> 
-<%end%> 
+    <% if review.user == current_user %> 
+        <%= button_to "Delete Review", review_path(review), method: :delete, data: { confirm: "Are you sure?"} %>
+    <%end%>
+<%end%>
+
 
 
 

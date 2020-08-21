@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
-    before_action :get_book, only: [:index, :create, :update]
+    before_action :get_book, only: [:index, :create, :update, :destroy]
 
     def index
         @reviews = @book.reviews 
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review.destroy 
-        redirect_to books_path 
+        redirect_to book_reviews_path(@review.book), notice: "Your review was successfully deleted" 
     end 
 
     private 

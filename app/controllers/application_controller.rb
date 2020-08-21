@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    helper_method :current_user, :logged_in?, :require_login
+    helper_method :current_user, :logged_in?, :require_login, :is_authorized
   
  
 
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to '/' unless session.include? :user_id
   end
+
+  def is_authorized(resource)
+    resource.user == current_user
+  end 
 
   
 end

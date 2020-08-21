@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :get_book, only: [:index, :create, :update]
 
     def index
-        @reviews = Review.all 
+        @reviews = @book.reviews 
     end 
 
     def new
@@ -12,7 +13,7 @@ class ReviewsController < ApplicationController
     def create
         @review = Review.new(reviews_params)
         if @review.save 
-            redirect_to review_path(@review)
+            redirect_to book_reviews_path(@book)
         else 
             render :new, alert: "All fields required"
         end
@@ -42,12 +43,16 @@ class ReviewsController < ApplicationController
     private 
 
     def reviews_params
-        params.require(:review).permit(:title, :stars, :content)
+        params.require(:review).permit(:title, :stars, :content, :book_id, :user_id)
     end 
 
 
     def set_review 
         @review = Review.find_by(id: params[:id])
+    end 
+
+    def get_book 
+        @book = Book.find_by(id: params[:book_id])
     end 
  
 end

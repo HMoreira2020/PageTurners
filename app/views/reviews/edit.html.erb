@@ -14,13 +14,13 @@
 
     <% end %>
     <%= f.hidden_field :user_id, value: current_user.id%>
-    <%= f.hidden_field :book_id, value: @book.id%>
+    <%= f.hidden_field :book_id, value: @review.book.id%>
     <%= f.label :content, "What did you think?" %> <br>
     <%= f.text_area :content %> <br>
 
     <%= f.label :stars, "Rating (1-5)" %><br> 
     <%= f.number_field :stars, :in => 1..5 %> <br>
 
-    <%= f.submit "Add Review" %>
+    <%= f.submit %>
 <%end%>
 </div>

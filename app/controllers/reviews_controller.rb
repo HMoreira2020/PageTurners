@@ -26,9 +26,8 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review.update(reviews_params)
-        if @review.save 
-            redirect_to review_path(@review)
+        if @review.update(reviews_params)
+            redirect_to review_path(@review), notice: "Your review was successfully updated."
         else 
             render :edit, alert: "All fields required"
         end

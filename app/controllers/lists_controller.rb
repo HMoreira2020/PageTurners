@@ -36,7 +36,7 @@ class ListsController < ApplicationController
 
     def update
         if @list.update(list_params) 
-            redirect_to user_list_path(@list.user_id, @list), notice: 'List was successfully updated.'
+                redirect_to user_list_path(@list.user_id, @list), notice: 'List was successfully updated.'
         else 
             render :edit, alert: "Title required"
         end

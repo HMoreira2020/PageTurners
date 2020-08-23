@@ -12,8 +12,12 @@
     <% if @user.lists.empty? %>
         <%=@user.username%> has no lists yet.
     <%else%>
-        
-    <h2><%= @user.username%>'s Lists</h2>
+    
+    <% if @user == current_user %>
+        <h2>Your Lists</h2>
+    <% else %> 
+        <h2><%= @user.username%>'s Lists</h2>
+    <%end%>
         <div class = "lists">
             <% @user.lists.each do |list| %>
                 <%= link_to list.title, user_list_path(@user, list) %><br>

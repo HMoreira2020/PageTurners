@@ -1,9 +1,9 @@
 <h1><%= @list.title %></h1>
 <% @list.books.each do |book| %> 
-    <%= link_to book.title, book_path(book)%> 
+    <%= link_to book.title, book_path(book)%><br>
 <% end %> <br>
 
-<% if @user == current_user %>
+<% if is_authorized(@list) %>
     <%= link_to "Add a Book", books_path %><br>
     <%= link_to "Edit List", edit_list_path(@list) %> 
  

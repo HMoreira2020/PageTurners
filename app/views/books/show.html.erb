@@ -22,9 +22,7 @@ Genre: <%=@book.genre.name%></h4><br>
 <% @book.reviews.each do |review| %> 
     <strong><%= review.user.username %></strong> rated it <%= review.stars %> stars - <%=review_date(review.created_at)%><br>
     <%= review.content %><br> 
-    <% if review.user == current_user %> 
-        <%= button_to "Delete Review", review_path(review), method: :delete, data: { confirm: "Are you sure?"} %>
-    <%end%><br>
+<%= link_to "see more", review_path(review) %><br><br>
 <%end%>
 
 

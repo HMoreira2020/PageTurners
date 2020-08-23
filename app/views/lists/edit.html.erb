@@ -10,10 +10,10 @@
 </div>
 <% end %>
 
-<%= form_for [@list] do |f| %> 
+<%= form_for @list do |f| %> 
         <%= f.label :title, "List Title" %> 
         <%= f.text_field :title %><br><br>
-    
+         
         <%= f.submit %>
 
 <%end%>

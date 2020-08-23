@@ -3,8 +3,8 @@ Notes:
 - [x]  user can ADD BOOKS TO LISTS 
 - [ ]  implement google books api 
 - [ ]  use google books api for book searches, displaying images, adding books to list
-- [ ]  nest reviews under books
-- [ ]  reviews new, create, edit, update, destroy 
+- [x]  nest reviews under books
+- [ ]  reviews new, create, edit, update, destroy (BUILD EDIT AND UPDATE)
 - [x]  users new, create, edit, update
 - [x]  sessions new, create, destroy
 - [x]  search books from homepage or books index
@@ -16,9 +16,12 @@ Notes:
 - [ ]  User can delete a book from the list on the list show page 
 - [x]  user can delete a review they created
 - [ ]  put a books reviews on a books show page and make sure links are changed accordingly 
-- [ ] 
-- [ ]  
-- [ ] 
+- [ ] FIX ADD BOOK TO LIST - no repeat books 
+- [ ] REDO lists#update action to add books to list - use strong params and mass assignment list in books/reviews
+- [ ] ADD ability to delete a book off of a list 
+- [ ] Add conditional for ownership in view and in controller before delete and edit actions 
+
+
 
 Homepage
 -search for books 
@@ -37,3 +40,7 @@ if you click on review you are taken to the books/1/reviews/new page to add a re
 fill out review form and are redirected to the book show page 
 
 on books index page I want top rated to be displayed(sort_by_ratings) 
+
+Questions: 
+scope - is what I have sufficient? 
+my forms seem inconsistent 

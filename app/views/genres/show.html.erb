@@ -2,9 +2,11 @@
 <% if @genre.books.empty? %>
     There are no Books in this Genre yet 
 <%else%>
+<ul>
 <% @genre.books.each do |book| %>
-    <%= link_to book.title, book_path(book) %> by <%= book.author %><br>
-    <strong>Synopsis: </strong> <%= book.synopsis %> 
-<%end%> 
+    <li><%= link_to book.title, book_path(book) %> by <%= book.author %><br>
+    <strong>Synopsis: </strong> <%= book.synopsis %></li>
+<%end%>
+</ul>
 <%end%>
 

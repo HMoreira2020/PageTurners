@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
-    before_action :get_book, only: [:create, :update, :destroy]
+    before_action :get_book, only: [:new, :create, :update, :destroy]
+
+    def index
+    end 
 
     def new
         @review = Review.new 
@@ -9,7 +12,7 @@ class ReviewsController < ApplicationController
     def create
         @review = Review.new(reviews_params)
         if @review.save 
-            redirect_to book_reviews_path(@book)
+            redirect_to book_path(@book)
         else 
             render :new, alert: "All fields required"
         end
@@ -33,13 +36,13 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review.destroy 
-        redirect_to book_reviews_path(@review.book), notice: "Your review was successfully deleted" 
+        redirect_to book_path(@book), notice: "Your review was successfully deleted" 
     end 
 
     private 
 
     def reviews_params
-        params.require(:review).permit(:title, :stars, :content, :book_id, :user_id)
+        params.require(:review).permit(:stars, :content, :book_id, :user_id)
     end 
 
 

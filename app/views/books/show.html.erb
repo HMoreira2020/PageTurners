@@ -14,31 +14,13 @@ Genre: <%=@book.genre.name%></h4><br>
     <%= f.submit "Add to List" %>
 <%end%><br>
 
-<div class="review-form">
-<h4>Add a Review</h4>
-<%= form_for [@book, Review.new] do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id%>
-    <%= f.hidden_field :book_id, value: @book.id%>
-    
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %><br> 
 
-    <%= f.label :content %> <br>
-    <%= f.text_area :content %> <br>
-
-    <%= f.label :stars, "Rating (1-5)" %><br> 
-    <%= f.number_field :stars, :in => 1..5 %> <br>
-
-    <%= f.submit "Add Review" %>
-<%end%>
-</div>
-
+<%= link_to "Write a Review", new_book_review_path(@book) %> 
 <h3>Reviews</h3> 
-<%= @reviews.count %> reviews<br>
+<%= @book.reviews.count %> reviews<br>
 
-<% @reviews.each do |review| %> 
+<% @book.reviews.each do |review| %> 
     <strong><%= review.user.username %></strong> rated it <%= review.stars %> stars - <%=review_date(review.created_at)%><br>
-    <%= review.title %><br>
     <%= review.content %><br> 
     <% if review.user == current_user %> 
         <%= button_to "Delete Review", review_path(review), method: :delete, data: { confirm: "Are you sure?"} %>

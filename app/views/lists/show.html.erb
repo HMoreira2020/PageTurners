@@ -4,7 +4,6 @@
 <% end %> <br>
 
 <% if is_authorized(@list) %>
-    <%= link_to "Add a Book", books_path %><br>
     <%= link_to "Edit List", edit_list_path(@list) %> 
  
     <%= form_tag list_path(@list), method: "delete" do %>

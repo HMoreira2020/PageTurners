@@ -11,11 +11,10 @@
 <% end %>
 
 <%= form_for @list do |f| %> 
-        <%= f.label :title, "List Title" %> 
-        <%= f.text_field :title %><br><br>
+  <%= f.label :title, "List Title" %> 
+  <%= f.text_field :title %><br><br>
          
-        <%= f.submit %>
-
+  <%= f.submit %>
 <%end%>
 
 <%= form_tag list_path(@list), method: "delete" do %>

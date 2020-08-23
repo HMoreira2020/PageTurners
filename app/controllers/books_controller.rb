@@ -35,11 +35,11 @@ class BooksController < ApplicationController
     def update
         if params[:book][:lists] != nil 
             @list = List.find_by(id: params[:book][:lists])
-            if !already_on_list?(@book, @list)
+            if already_on_list?(@book, @list)
+                redirect_to user_list_path(current_user, @list), notice: "You have already added this book to #{@list.title}"
+            else 
                 add_to_list(@book, @list) 
                 redirect_to user_list_path(current_user, @list), notice: "Book successfully added to your list"
-            else 
-                render :show, alert: "You have already added this book to #{@list.title}"
             end
         elsif @book.update(book_params) 
             redirect_to book_path(@book), alert: "Book successfully updated"
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
     end 
     
     def already_on_list?(book, list)
-        list.books.include?(book) ? true : false 
+        list.books.include?(book) 
     end 
 
     def add_to_list(book, list)

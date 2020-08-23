@@ -43,8 +43,12 @@ class ListsController < ApplicationController
     end
 
     def destroy 
-        @list.destroy 
-        redirect_to user_lists_path(current_user), notice: 'List was successfully destroyed.'
+        if is_authorized(@list)
+            @list.destroy 
+            redirect_to user_path(current_user), notice: 'List was successfully destroyed.'
+        else 
+            render :show, alert: "You are not authorized to delete this list"
+        end 
     end 
 
     private 

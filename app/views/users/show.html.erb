@@ -1,20 +1,19 @@
 <% if logged_in? %>
-    <% if @user.username != nil %>
-        <h1>Welcome <%= @user.username %>, You are signed in!</h1>
+    <% if current_user.username != nil %>
+        <h1>You are signed in as <%= current_user.username %></h1>
     <%else%>
-        <h1>Welcome <%= @user.name %>, You are signed in!</h1>
+        <h1>You are signed in as <%= current_user.name %></h1>
     <%end%>
         <div><img src="<%= @user.image %>"></div>
-    <%else%> 
-        <%= link_to('Log in with Facebook!', '/auth/facebook') %>
-    <% end %>
+<%else%> 
+    <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
 
-    <% if current_user.lists.empty? %>
-        You have no lists yet.
-        <%= link_to "New List", new_user_list_path(@user, @list) %>
+    <% if @user.lists.empty? %>
+        <%=@user.username%> has no lists yet.
     <%else%>
         
-    <h2>Your Lists</h2>
+    <h2><%= @user.username%>'s Lists</h2>
         <div class = "lists">
             <% @user.lists.each do |list| %>
                 <%= link_to list.title, user_list_path(@user, list) %><br>

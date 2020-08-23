@@ -4,7 +4,7 @@ Notes:
 - [ ]  implement google books api 
 - [ ]  use google books api for book searches, displaying images, adding books to list
 - [x]  nest reviews under books
-- [ ]  reviews new, create, edit, update, destroy (BUILD EDIT AND UPDATE)
+- [x]  reviews new, create, edit, update, destroy (BUILD EDIT AND UPDATE)
 - [x]  users new, create, edit, update
 - [x]  sessions new, create, destroy
 - [x]  search books from homepage or books index

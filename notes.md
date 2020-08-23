@@ -11,7 +11,7 @@ Notes:
 - [x]  Books index, new, create, edit, update 
 - [x]  lists index, new, create, edit, update 
 - [ ]  Add styling 
-- [ ]  Add images for books 
+- [ ]  MAKE SURE VALIDATIONS ARE ALL THERE ON FORM ERRORS 
 - [x]  user can create new lists
 - [ ]  User can delete a book from the list on the list show page 
 - [x]  user can delete a review they created

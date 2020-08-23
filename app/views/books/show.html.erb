@@ -20,7 +20,7 @@ Genre: <%=@book.genre.name%></h4><br>
 <%= @book.reviews.count %> reviews<br>
 
 <% @book.reviews.each do |review| %> 
-    <strong><%= review.user.username %></strong> rated it <%= review.stars %> stars - <%=review_date(review.created_at)%><br>
+    <strong><%= review.user.username %></strong> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%><br>
     <%= review.content %><br> 
 <%= link_to "see more", review_path(review) %><br><br>
 <%end%>

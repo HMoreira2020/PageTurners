@@ -3,9 +3,11 @@
     <%= link_to book.title, book_path(book)%> 
 <% end %> <br>
 
-<%= link_to "Add a Book", books_path %><br>
-<%= link_to "Edit List", edit_list_path(@list) %> 
+<% if @user == current_user %>
+    <%= link_to "Add a Book", books_path %><br>
+    <%= link_to "Edit List", edit_list_path(@list) %> 
  
-<%= form_tag list_path(@list), method: "delete" do %>
-    <%= submit_tag "Delete This List" %>
-  <% end %>
+    <%= form_tag list_path(@list), method: "delete" do %>
+        <%= submit_tag "Delete This List" %>
+    <% end %>
+<%end%>

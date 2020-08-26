@@ -26,8 +26,7 @@ class BooksController < ApplicationController
 
 
     def show
-        @reviews = @book.reviews
-        
+        @reviews = @book.reviews.by_date(15)
     end
 
     def edit

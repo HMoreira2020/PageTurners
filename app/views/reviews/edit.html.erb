@@ -1,18 +1,8 @@
-<div class="review-form">
-<%= form_for [@book, @review] do |f| %>
-    
-    <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this book from being saved:</h2>
-    
-      <ul>
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= render partial: "errors/error", locals: {review: @review} %>
 
-    <% end %>
+<h2>Edit Review for <%=link_to @review.book.title, book_path(@review.book)%></h2>
+<div class="review-form">
+<%= form_for @review do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id%>
     <%= f.hidden_field :book_id, value: @review.book.id%>
     <%= f.label :content, "What did you think?" %> <br>

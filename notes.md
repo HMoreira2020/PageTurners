@@ -19,17 +19,15 @@ Notes:
 - [ ] Add conditional for ownership in view and in controller before delete and edit actions 
 - [X] PREVENT A USER FROM REVIEWING A BOOK TWICE 
 - [x] USER CAN DELETE A BOOK OF OF A LIST 
+- [ ] Would like to add filter by rating on homepage 
 
 
 
-Homepage
-searcg books by title and by author 
-sort books by genre and rating
+AUTHORIZATION - ownership conditionals for user actions edit, update, new, create - double check 
+REQUIRE ADMIN  - admin for books and genres handling new, edit and delete 
+STYLING 
 
-
-
-
-ownership conditionals for user actions edit, update, new, create - double check 
-sorting books from dropdown or filter on show page 
-add admin 
-stlying
+DRY UP CODE 
+HELPERS
+PARTIALS 
+FIX IMAGES 

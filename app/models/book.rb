@@ -7,7 +7,7 @@ class Book < ApplicationRecord
     has_many :reviewers, through: :reviews, source: :user #book.reviewers users that have reviewed it 
     
     validates :title, :author, :synopsis, presence: true 
-    validates :title, uniqueness: { case_sensitive: false }
+    validates :title, uniqueness: { case_sensitive: false, message: "This book is already in our database." }
 
 
     accepts_nested_attributes_for :lists 
@@ -15,7 +15,7 @@ class Book < ApplicationRecord
     #scope :sort_by_title, -> { order(title: :asc) }
    
     def self.search(search)
-        search.blank? ? self.all : self.all.where("lower(title) LIKE ?", "%#{search}%")
+        search.blank? ? self.all : self.all.where("lower(title) LIKE ? or lower(author) LIKE ?", "%#{search}%", "%#{search}%")
     end
 
     def self.sort_by_title

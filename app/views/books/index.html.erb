@@ -1,13 +1,16 @@
 
 <h3>Search Books</h3>
 <%= form_tag books_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Books By Title"  %> 
+  <%= text_field_tag :search, params[:search], placeholder: "Enter a Title or Author"  %> 
   <%= submit_tag ("Search") %> 
 <%end%> <br>
-
-
-<% @books.each do |b| %>
-  <%= render partial: 'books', locals: {book: b} %>
+ 
+  <% if @books.empty? %> 
+    <div>We cannot find a book or author by that name.</div>
+  <%else%>  
+    <% @books.each do |b| %>
+    <%= render partial: 'books', locals: {book: b} %>
+  <%end%>
 <% end %> 
 
 

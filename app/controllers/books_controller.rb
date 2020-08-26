@@ -2,11 +2,11 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     def index
-        search = params[:search] 
+        @search = params[:search] 
         if params[:search].blank? 
             @books = Book.all
         else 
-            @books = Book.search(search)
+            @books = Book.search(@search)
         end 
     end 
 

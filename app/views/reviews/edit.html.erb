@@ -1,5 +1,5 @@
 
-
+<%= render "errors/error", model: @review %>
 <h2>Edit Review for <%=link_to @review.book.title, book_path(@review.book)%></h2>
 <div class="review-form">
 <%= form_for @review do |f| %>

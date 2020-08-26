@@ -1,14 +1,5 @@
 <h1>Edit Your List</h1>
-<% if @list.errors.any? %>
-<div id="error_explanation">
-  <h4><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h4>
-  <ul>
-  <% @list.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
+<%= render "errors/error", model: @list %>
 
 <%= form_for @list do |f| %> 
   <%= f.label :title, "List Title" %> 
@@ -19,6 +10,6 @@
 
 <%= form_tag list_path(@list), method: "delete" do %>
     <%= submit_tag "Delete This List" %>
-  <% end %>
+<% end %>
 
   

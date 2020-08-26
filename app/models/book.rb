@@ -24,5 +24,8 @@ class Book < ApplicationRecord
     def self.sort_by_ratings 
     end 
 
+    def average_rating 
+        self.reviews.average(:stars).to_f
+    end 
 
 end

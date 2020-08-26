@@ -26,13 +26,13 @@ Homepage
 sort books by title 
 sort books by author 
 sort books by genre 
+sort by highest rating 
+average rating? 
 scope 
 
 
-on books index page I want top rated to be displayed(sort_by_ratings) 
 
-
+ownership conditionals for user actions edit, update, new, create - double check 
+sorting books from dropdown or filter on show page 
+add admin 
 stlying
-ownership conditionals for user actions edit, update, new, create 
-scope method
-sorting books 

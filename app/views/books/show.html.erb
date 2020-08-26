@@ -2,7 +2,10 @@
 <div>
 Author: <%=@book.author %></h3><br>
 Genre: <%=@book.genre.name%></h4><br>
-</div
+<% if @book.reviews.present? %> 
+    <div> Average Rating: <%= @book.average_rating %> 
+<%end%> 
+</div>
 <div>
     <p>Synopsis:<br>
     <%=@book.synopsis%></p>
@@ -17,7 +20,7 @@ Genre: <%=@book.genre.name%></h4><br>
 
 <%= link_to "Write a Review", new_book_review_path(@book) %> 
 <h3>Reviews</h3> 
-<%= @book.reviews.count %> reviews<br>
+<%= @book.reviews.count %> reviews<br> 
 
 <% @reviews.each do |review| %> 
     <strong><%= review.user.username %></strong> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%><br>

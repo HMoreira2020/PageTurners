@@ -4,4 +4,5 @@ class Review < ApplicationRecord
   #validations for title, content, stars 
   validates :content, :stars, presence: true 
   
+  
 end

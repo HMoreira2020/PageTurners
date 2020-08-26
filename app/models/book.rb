@@ -12,7 +12,7 @@ class Book < ApplicationRecord
 
     accepts_nested_attributes_for :lists 
     
-
+    #scope :sort_by_title, -> { order(title: :asc) }
    
     def self.search(search)
         search.blank? ? self.all : self.all.where("lower(title) LIKE ?", "%#{search}%")

@@ -53,6 +53,7 @@ class BooksController < ApplicationController
         list = List.find_by(id: params[:list_id])
         list.books.delete(@book) 
         redirect_to user_list_path(current_user, list), notice: "#{book.title} was removed from this list."
+        #why can't I do BooksList.where(book_id: book.id, list_id: list.id).destroy all - gave me no such colum books_lists error
     end 
 
 
@@ -66,6 +67,7 @@ class BooksController < ApplicationController
         @book = Book.find_by(id: params[:id])
     end 
     
+    #do these go in the book.rb? 
     def already_on_list?(book, list)
         list.books.include?(book) 
     end 

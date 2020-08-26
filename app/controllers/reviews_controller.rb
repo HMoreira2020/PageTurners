@@ -6,16 +6,24 @@ class ReviewsController < ApplicationController
     end 
 
     def new
-        @review = Review.new 
+        if current_user.can_review?(@book)
+            @review = Review.new
+        else 
+            redirect_to book_path(@book), alert: "You have already written a review for #{@book.title}"
+        end 
     end
 
     def create
+        if current_user.can_review?(@book)
         @review = Review.new(reviews_params)
-        if @review.save 
-            redirect_to book_path(@book)
+            if @review.save 
+                redirect_to book_path(@book), notice: "You have reviewed #{@book.title}"
+            else 
+                render :new, alert: "All fields required"
+            end
         else 
-            render :new, alert: "All fields required"
-        end
+            redirect_to book_path(@book), alert: "You have already written a review for this #{@book.title}"
+        end 
     end
     
 

@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
     has_secure_password 
     has_one_attached :image
+
+    
    
     def self.create_by_facebook_omniauth(auth)
         self.where(email: auth[:info][:email]).first_or_create do |u|
@@ -21,7 +23,9 @@ class User < ApplicationRecord
         end
     end
 
-   
+   def can_review?(book)
+        book.reviewers.include?(self) ? false : true 
+   end 
     
 
 end

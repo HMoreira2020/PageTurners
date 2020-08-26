@@ -16,6 +16,19 @@ class GenresController < ApplicationController
         end
     end
     
+    def edit
+        @genre = Genre.find_by(id: params[:id])
+    end
+
+    def update
+        @genre = Genre.find_by(id: params[:id])
+        if @genre.update(name: params[:genre][:name]) 
+            redirect_to genre_path(@genre), notice: 'Genre was successfully updated.'
+        else 
+            render :edit, alert: "Name required"
+        end
+    end
+
 
     def show
         @genre = Genre.find_by(id: params[:id])

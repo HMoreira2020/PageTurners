@@ -23,12 +23,9 @@ Notes:
 
 
 Homepage
-sort books by title 
-sort books by author 
-sort books by genre 
-sort by highest rating 
-average rating? 
-scope 
+searcg books by title and by author 
+sort books by genre and rating
+
 
 
 

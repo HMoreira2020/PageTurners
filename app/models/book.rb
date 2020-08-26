@@ -13,7 +13,8 @@ class Book < ApplicationRecord
     accepts_nested_attributes_for :lists 
     
     scope :sort_by_title, -> { order(title: :asc) }
-    scope :sort_by_author, -> { order(author: :asc) }
+    scope :filter_by_rating, -> {joins(:reviews).group("books.id").order("AVG(reviews.stars)  DESC")}
+
     
    
     def self.search(search)

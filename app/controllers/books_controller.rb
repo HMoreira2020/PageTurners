@@ -2,11 +2,14 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     def index
+        @genres = Genre.all 
         @search = params[:search] 
-        if params[:search].blank? 
-            @books = Book.sort_by_title
+        if !params[:genre].blank?
+            @books = Book.where(genre: params[:genre]) 
+        elsif !params[:search].blank?
+            @books = Book.search(@search) 
         else 
-            @books = Book.search(@search)
+            @books = Book.sort_by_title
         end 
     end 
 

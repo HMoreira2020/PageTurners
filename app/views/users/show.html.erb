@@ -1,13 +1,8 @@
-<% if logged_in? %>
-    <% if current_user.username != nil %>
-        <h1>You are signed in as <%= current_user.username %></h1>
-    <%else%>
-        <h1>You are signed in as <%= current_user.name %></h1>
-    <%end%>
-        <div><img src="<%= @user.image %>"></div>
-<%else%> 
+<% if !logged_in? %>
     <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <% end %>
+
+<div><img src="<%= @user.image %>"></div>
 
     <% if @user.lists.empty? %>
         <%=@user.username%> has no lists yet.

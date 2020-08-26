@@ -22,7 +22,7 @@ class Book < ApplicationRecord
     end
 
 
-    def self.sort_by_ratings 
+    def self.sort_by_ratings #build this next
     end 
 
     def average_rating 

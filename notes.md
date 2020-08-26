@@ -20,6 +20,7 @@ Notes:
 - [X] PREVENT A USER FROM REVIEWING A BOOK TWICE 
 - [x] USER CAN DELETE A BOOK OF OF A LIST 
 - [ ] Would like to add filter by rating on homepage 
+- [ ] Refactor user show page/authorization needed
 
 
 

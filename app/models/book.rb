@@ -12,17 +12,14 @@ class Book < ApplicationRecord
 
     accepts_nested_attributes_for :lists 
     
-    #scope :sort_by_title, -> { order(title: :asc) }
+    scope :sort_by_title, -> { order(title: :asc) }
+    scope :sort_by_author, -> { order(author: :asc) }
+    
    
     def self.search(search)
         search.blank? ? self.all : self.all.where("lower(title) LIKE ? or lower(author) LIKE ?", "%#{search}%", "%#{search}%")
     end
 
-    def self.sort_by_title
-    end 
-
-    def self.sort_by_author 
-    end 
 
     def self.sort_by_ratings 
     end 

@@ -23,5 +23,6 @@ class ApplicationController < ActionController::Base
     resource.user == current_user
   end 
 
+
   
 end

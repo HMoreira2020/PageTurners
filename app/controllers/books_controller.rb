@@ -4,7 +4,7 @@ class BooksController < ApplicationController
     def index
         @search = params[:search] 
         if params[:search].blank? 
-            @books = Book.all
+            @books = Book.sort_by_title
         else 
             @books = Book.search(@search)
         end 
@@ -26,7 +26,8 @@ class BooksController < ApplicationController
 
 
     def show
-        @reviews = @book.reviews 
+        @reviews = @book.reviews
+        
     end
 
     def edit

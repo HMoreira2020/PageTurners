@@ -1,4 +1,4 @@
-
+<%= render "errors/error", model: @review %>
 <div class="review-form">
 <%= form_for [book, review] do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id%>

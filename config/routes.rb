@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     resources :lists, only: [:index, :new, :create, :show]
   end 
 
-  resources :lists, only: [:edit, :update, :destroy]
+  resources :lists, only: [:edit, :update, :destroy] do
+    resources :books, only: [:destroy] 
+  end
   
- 
+
   
   
 

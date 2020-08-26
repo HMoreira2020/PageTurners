@@ -16,10 +16,11 @@ Notes:
 - [ ]  User can delete a book from the list on the list show page 
 - [x]  user can delete a review they created
 - [x]  put a books reviews on a books show page and make sure links are changed accordingly 
-- [ ] FIX ADD BOOK TO LIST - no repeat books 
+- [x] FIX ADD BOOK TO LIST - no repeat books 
 - [ ] REDO lists#update action to add books to list - use strong params and mass assignment list in books/reviews
-- [ ] ADD ability to delete a book off of a list 
 - [ ] Add conditional for ownership in view and in controller before delete and edit actions 
+- [ ] PREVENT A USER FROM REVIEWING A BOOK TWICE 
+- [x] USER CAN DELETE A BOOK OF OF A LIST 
 
 
 

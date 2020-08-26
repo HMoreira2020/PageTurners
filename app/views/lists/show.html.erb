@@ -1,6 +1,6 @@
 <h1><%= @list.title %></h1>
 <% @list.books.each do |book| %> 
-    <%= link_to book.title, book_path(book)%><br>
+    <%= link_to book.title, book_path(book)%> - <%= link_to 'Delete', list_book_path(@list.id, book.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %> <br>
 
 <% if is_authorized(@list) %>
@@ -10,3 +10,4 @@
         <%= submit_tag "Delete This List" %>
     <% end %>
 <%end%>
+

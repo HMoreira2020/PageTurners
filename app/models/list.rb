@@ -1,6 +1,6 @@
 class List < ApplicationRecord
   belongs_to :user
-  has_many :books_lists
+  has_many :books_lists, dependent: :destroy
   has_many :books, through: :books_lists, dependent: :destroy
   
   validates :title, presence: true, uniqueness: { scope: :user_id,

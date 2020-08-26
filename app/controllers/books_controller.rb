@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-    before_action :set_book, only: [:show, :edit, :add_to_list, :update, :destroy]
+    before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     def index
         search = params[:search] 
@@ -39,7 +39,7 @@ class BooksController < ApplicationController
                 redirect_to user_list_path(current_user, @list), notice: "You have already added this book to #{@list.title}"
             else 
                 add_to_list(@book, @list) 
-                redirect_to user_list_path(current_user, @list), notice: "Book successfully added to your list"
+                redirect_to user_list_path(current_user, @list), notice: "#{@book.title} successfully added to your list"
             end
         elsif @book.update(book_params) 
             redirect_to book_path(@book), alert: "Book successfully updated"
@@ -47,6 +47,14 @@ class BooksController < ApplicationController
             render :edit, alert: "All fields required"
         end
     end
+
+    def destroy
+        book = Book.find_by(id: params[:id])
+        list = List.find_by(id: params[:list_id])
+        list.books.delete(@book) 
+        redirect_to user_list_path(current_user, list), notice: "#{book.title} was removed from this list."
+    end 
+
 
     private
 

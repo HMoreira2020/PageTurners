@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
     belongs_to :genre #the user that created it 
-    has_many :books_lists
+    has_many :books_lists, dependent: :destroy
     has_many :lists, through: :books_lists 
     has_many :users, through: :lists 
     has_many :reviews #from different users

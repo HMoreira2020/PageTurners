@@ -13,10 +13,12 @@
 <%= form_for @list do |f| %> 
   <%= f.label :title, "List Title" %> 
   <%= f.text_field :title %><br><br>
-         
+
   <%= f.submit %>
 <%end%>
 
 <%= form_tag list_path(@list), method: "delete" do %>
     <%= submit_tag "Delete This List" %>
   <% end %>
+
+  

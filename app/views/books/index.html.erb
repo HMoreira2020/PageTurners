@@ -24,5 +24,6 @@
   <%end%>
 <% end %> 
 
-
+<% if admin? %>
 <%= link_to "Add a New book", new_book_path %> <br> 
+<%end%>

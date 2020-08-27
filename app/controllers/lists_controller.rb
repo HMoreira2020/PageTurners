@@ -35,6 +35,7 @@ class ListsController < ApplicationController
     end
 
     def update
+        authorize @list
         if @list.update(list_params) 
             redirect_to user_list_path(@list.user_id, @list), notice: 'List was successfully updated.'
         else 

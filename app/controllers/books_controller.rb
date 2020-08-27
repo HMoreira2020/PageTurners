@@ -16,10 +16,12 @@ class BooksController < ApplicationController
 
     def new
         @book = Book.new 
+        authorize @book
     end
 
     def create
         @book = Book.new(book_params)
+        authorize @book
         if @book.save 
             redirect_to book_path(@book), notice: "Book successfully created"
         else 
@@ -33,6 +35,7 @@ class BooksController < ApplicationController
     end
 
     def edit
+        authorize @book
     end
 
     def update #add a book to a list or edit a book as an admin 
@@ -89,5 +92,7 @@ class BooksController < ApplicationController
             redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
         end
     end
+
+    
 
 end

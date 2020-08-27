@@ -21,7 +21,8 @@ Notes:
 - [x] USER CAN DELETE A BOOK OF OF A LIST 
 - [ ] Would like to add filter by rating on homepage 
 - [ ] Refactor user show page/authorization needed
-
+- [ ] REquire login before all actions besides login/signup/homepage/books index.  
+- [ ] REquire login before all actions besides login/signup/homepage/books index.  
 
 
 AUTHORIZATION - ownership conditionals for user actions edit, update, new, create - double check 

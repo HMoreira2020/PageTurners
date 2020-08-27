@@ -1,11 +1,15 @@
 <h1><%= @list.title %></h1>
 <% @list.books.each do |book| %> 
-    <%= link_to book.title, book_path(book)%> - <%= link_to 'Delete', list_book_path(@list.id, book.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <%= link_to book.title, book_path(book)%><% if policy(@list).update? %> -
+    <%= link_to 'Remove', list_book_path(@list.id, book.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%><br>
 <% end %> <br>
 
-<% if is_authorized(@list) %>
+<% if policy(@list).update? %>
     <%= link_to "Edit List", edit_list_path(@list) %> 
+<%end%>
  
+<% if policy(@list).destroy? %>
     <%= form_tag list_path(@list), method: "delete" do %>
         <%= submit_tag "Delete This List" %>
     <% end %>

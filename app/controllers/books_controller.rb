@@ -35,19 +35,18 @@ class BooksController < ApplicationController
     def edit
     end
 
-    def update
-        if params[:book][:lists] != nil 
+    def update #add a book to a list or edit a book as an admin 
+        if params[:book][:lists] != nil  #to add book to a list 
             @list = List.find_by(id: params[:book][:lists])
-            if already_on_list?(@book, @list)
-                redirect_to user_list_path(current_user, @list), notice: "You have already added this book to #{@list.title}"
+            authorize @list
+            add_book_to_list(@book, @list)
+        else
+            authorize @book 
+            if  @book.update(book_params) 
+                redirect_to book_path(@book), alert: "Book successfully updated"
             else 
-                add_to_list(@book, @list) 
-                redirect_to user_list_path(current_user, @list), notice: "#{@book.title} successfully added to your list"
+                render :edit, alert: "All fields required"
             end
-        elsif @book.update(book_params) 
-            redirect_to book_path(@book), alert: "Book successfully updated"
-        else 
-            render :edit, alert: "All fields required"
         end
     end
 
@@ -80,10 +79,15 @@ class BooksController < ApplicationController
     def already_on_list?(book, list)
         list.books.include?(book) 
     end 
-
-    def add_to_list(book, list)
-        list.books << book
-        list.save 
-    end 
+    
+    def add_book_to_list(book, list)
+        if already_on_list?(book, list)
+            redirect_to user_list_path(current_user, list), notice: "You have already added this book to #{list.title}"
+        else 
+            list.books << book
+            list.save 
+            redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
+        end
+    end
 
 end

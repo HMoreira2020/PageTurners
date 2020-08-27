@@ -1,0 +1,13 @@
+<h2>Readers</h2>
+
+<% @users.each do |user| %> 
+    <%= link_to user.username, user_path(user) %><br>
+        <% if user.lists.present? %>
+            <% user.lists.each do |list| %> 
+                <%= link_to list.title, user_list_path(user, list) %> <br>
+            <%end%>
+    <%else%>
+        No lists yet.<br>
+    <%end%><br>
+<%end%> 
+

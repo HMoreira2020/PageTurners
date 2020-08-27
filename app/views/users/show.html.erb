@@ -10,9 +10,9 @@
     <%else%>
     
     <% if @user == current_user %>
-        <h2>Your Lists</h2>
+        <h2><%= @user.username%> < My Lists</h2>
     <% else %> 
-        <h2><%= @user.username%>'s Lists</h2>
+        <h2><%= @user.username%>'s < Lists</h2>
     <%end%>
         <div class = "lists">
             <% @user.lists.each do |list| %>

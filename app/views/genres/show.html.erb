@@ -1,4 +1,7 @@
-<h1><%=@genre.name%> Books</h1>
+<h1>Genres < <%=@genre.name%> Books</h1>
+<% if policy(@genre).update? %> 
+    <%= link_to "Edit Genre", edit_genre_path(@genre) %> 
+<% end %>
 <% if @genre.books.empty? %>
     There are no Books in this Genre yet 
 <%else%>

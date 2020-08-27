@@ -1,8 +1,9 @@
 <% if !logged_in? %>
     <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <% end %>
-
+<% if !@user.image.nil? %>
 <div><img src="<%= @user.image %>"></div>
+<%end%>
 
     <% if @user.lists.empty? %>
         <%=@user.username%> has no lists yet.
@@ -18,9 +19,9 @@
                 <%= link_to list.title, user_list_path(@user, list) %><br>
             <% end %> 
         <%end%>
-    </div>
+    </div><br>
 
     <% if @user == current_user %> 
-    <%= link_to "New List", new_user_list_path(@user, @list) %><br> 
+    <%= link_to "Create New List", new_user_list_path(@user, @list) %><br> 
     <%= link_to "Edit Profile", edit_user_path(@user) %>
     <%end%>

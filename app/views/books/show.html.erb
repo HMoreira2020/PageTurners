@@ -1,4 +1,4 @@
-<h1><%=@book.title%></h1>
+<h1>Books < <%=@book.title%></h1>
 <% if policy(@book).update? %> 
     <%= link_to "Edit Book", edit_book_path(@book) %> 
 <% end %>

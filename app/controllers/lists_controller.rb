@@ -17,9 +17,9 @@ class ListsController < ApplicationController
     end
 
     def create 
-        @list = @user.lists.build(list_params)
+        @list = current_user.lists.build(list_params)
         if @list.save 
-            redirect_to user_path(@user), notice: 'List was successfully created.'
+            redirect_to user_path(current_user), notice: 'List was successfully created.'
         else 
             render :new, alert: "Title required"
         end 

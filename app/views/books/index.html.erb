@@ -15,7 +15,7 @@
 </div><br>
  
   <% if @books.empty? %> 
-    <div>We cannot find a book or author by that name.</div>
+    <div>0 Books match your search </div>
   <%else%>  
     <% @books.each do |b| %>
       <strong>Title:</strong><%= link_to b.title, book_path(b) %><br>

@@ -1,4 +1,4 @@
-<h1><%= @list.title %></h1>
+<h1><%= @list.user.username%> < "<%= @list.title %>"</h1>
 <% @list.books.each do |book| %> 
     <%= link_to book.title, book_path(book)%><% if policy(@list).update? %> -
     <%= link_to 'Remove', list_book_path(@list.id, book.id), method: :delete, data: { confirm: 'Are you sure?' } %>

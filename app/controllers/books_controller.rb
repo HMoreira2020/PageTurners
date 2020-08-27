@@ -52,10 +52,16 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        book = Book.find_by(id: params[:id])
-        list = List.find_by(id: params[:list_id])
-        list.books.delete(@book) 
-        redirect_to user_list_path(current_user, list), notice: "#{book.title} was removed from this list."
+        if params[:list_id] != nil
+            book = Book.find_by(id: params[:id])
+            list = List.find_by(id: params[:list_id])
+            list.books.delete(@book) 
+            redirect_to user_list_path(current_user, list), notice: "#{book.title} was removed from this list."
+        else 
+            authorize @book 
+            @book.destroy 
+            redirect_to books_path, notice: 'Book was successfully destroyed.'
+        end 
         #why can't I do BooksList.where(book_id: book.id, list_id: list.id).destroy all - gave me no such colum books_lists error
     end 
 

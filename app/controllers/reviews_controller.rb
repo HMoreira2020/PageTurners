@@ -31,10 +31,11 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        
+        authorize @review
     end
 
     def update
+        authorize @review 
         if @review.update(reviews_params)
             redirect_to review_path(@review), notice: "Your review was successfully updated."
         else 
@@ -43,6 +44,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
+        authorize @review 
         @review.destroy 
         redirect_to book_path(@review.book), notice: "Your review was successfully deleted" 
     end 

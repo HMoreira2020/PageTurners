@@ -21,7 +21,11 @@
 <% @reviews.each do |review| %> 
     <strong><%= link_to review.user.username, user_path(review.user) %></strong> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%><br>
     <%= review.content %><br> 
-<%= link_to "see more", review_path(review) %><br><br>
+<%= link_to "see more", review_path(review) %><br>
+<% if policy(review).update? %>
+    <%= link_to "Edit Your Review", edit_review_path(review) %><br><br>
+<%end%>
+
 <%end%>
 
 

@@ -22,10 +22,19 @@
     
     <% if logged_in? %> 
       <%= link_to "Profile", user_path(current_user), class: "navbar-brand" %>
+      <div class="dropdown">
+        <button class="dropbtn">Browse
+      <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
       <%= link_to "Books", books_path, class: "navbar-brand" %>
       <%= link_to "Community", users_path, class: "navbar-brand" %>
       <%= link_to "Genres", genres_path, class: "navbar-brand" %>
       <%= link_to "Recommended", recommended_path, class: "navbar-brand" %>
+      </div>
+    </div>
+  
+      
       <%= link_to "Log Out", logout_path, class: "navbar-brand" %>
     <%else%>
       <%= link_to "Sign Up", new_user_path, class: "navbar-brand" %>

@@ -3,29 +3,42 @@
     <%= link_to "Edit Book", edit_book_path(@book) %> 
 <% end %>
 
-<div>
+<div class="book">
     <%= render partial: 'books', locals: {book: @book} %>
-</div><br>
+</div>
+
+<div class="add-to-list_form">
+    <% if current_user.lists.empty? %>
+        <%= link_to "Create a List", new_user_list_path(current_user, @list), class: "btn btn-default" %> 
+    <% else %> 
+    <%=form_for @book do |f| %>
+        <%= f.collection_select :lists, current_user.lists, :id, :title, {:prompt => 'Add this Book to a List' } %> 
+        <%= f.submit "Add to List" %>
+    <%end%>
+    <%end%>
+</div>
+<%= link_to "Write a Review", new_book_review_path(@book), class: "btn btn-default"  %> 
+
+<div class="reviews">
+    <h3>Reviews</h3> 
+        <div class="review-count">
+        <%= @book.reviews.count %> reviews<br> 
+        </div>
+  
+    <% @reviews.each do |review| %> 
+        <div class="review">
+            <h4><%= link_to review.user.username, user_path(review.user) %> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%></h4>
+            <%= review.content %>
+        <p class="review-actions">
+            <%= link_to "see more", review_path(review), class: "btn btn-default"%><br>
+            <% if policy(review).update? %>
+                <%= link_to "Edit Your Review", edit_review_path(review), class: "btn btn-default" %>
+            <%end%>
+        </ul>
+    <%end%>
+</div>
 
 
-<%=form_for @book do |f| %>
-    <%= f.collection_select :lists, current_user.lists, :id, :title, {:prompt => 'Add this Book to a List' } %> 
-    <%= f.submit "Add to List" %>
-<%end%><br>
 
-
-<%= link_to "Write a Review", new_book_review_path(@book) %> 
-<h3>Reviews</h3> 
-<%= @book.reviews.count %> reviews<br> 
-
-<% @reviews.each do |review| %> 
-    <strong><%= link_to review.user.username, user_path(review.user) %></strong> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%><br>
-    <%= review.content %><br> 
-<%= link_to "see more", review_path(review) %><br>
-<% if policy(review).update? %>
-    <%= link_to "Edit Your Review", edit_review_path(review) %><br><br>
-<%end%>
-
-<%end%>
 
 

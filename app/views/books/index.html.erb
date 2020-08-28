@@ -8,17 +8,24 @@
 
 
 
-<div>
 
   <% if @books.empty? %> 
     <div>0 Books match your search </div>
-  <%else%>  
-    <% @books.each do |b| %>
-      <strong>Title:</strong><%= link_to b.title, book_path(b) %><br>
-    <%= render partial: 'books', locals: {book: b} %>
-    <%= link_to "See more", book_path(b) %><br><br>
-  <%end%>
-<% end %> 
+  <%else%> 
+    <div class="books">  
+      <% @books.each do |b| %>
+        <div class="book">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3><%= link_to b.title, book_path(b) %></h3>
+              <p><%= render partial: 'books', locals: {book: b} %></p>
+              <p><%= link_to "See more", book_path(b), class: "btn btn-default"  %></p>
+            </div>
+          </div>
+        </div>
+      <%end%>
+  <% end %> 
+
 
 <% if admin? %>
 <%= link_to "Add a New book", new_book_path %> <br> 

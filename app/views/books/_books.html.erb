@@ -3,7 +3,8 @@
   Genre:  <%= link_to book.genre.name, genre_path(book.genre) %><br>
   Synopsis: <%= book.synopsis %><br>
   <% if book.reviews.present? %> 
-    <div> Average Rating: <%= book.average_rating %><br>
+    Average Rating: <%= book.average_rating %><br>
+    <%= stars(book.average_rating) %>
   <%end%> 
 </div>
   

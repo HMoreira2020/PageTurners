@@ -6,7 +6,5 @@
 <% if @review.user == current_user %> 
     <%= link_to "Edit Review", edit_review_path(@review) %>
 <%end%>
-<% if @review.user == current_user %> 
-        <%= button_to "Delete Review", review_path(@review), method: :delete, data: { confirm: "Are you sure?"} %>
-<%end%><br>
+
   

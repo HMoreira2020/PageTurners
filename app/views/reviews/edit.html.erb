@@ -14,3 +14,8 @@
     <%= f.submit %>
 <%end%>
 </div>
+
+<% if @review.user == current_user %> 
+        <%= button_to "Delete Review", review_path(@review), method: :delete, data: { confirm: "Are you sure?"} %>
+<%end%><br>
+  

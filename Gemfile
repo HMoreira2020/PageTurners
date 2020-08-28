@@ -67,3 +67,4 @@ gem 'dotenv-rails'
 
 gem 'activestorage', '~> 6.0', '>= 6.0.3.2'
 gem 'pundit'
+gem 'bootstrap-sass', '~> 3.4.1'

@@ -22,7 +22,7 @@ class Book < ApplicationRecord
 
 
     def average_rating 
-        self.reviews.average(:stars).to_f
+        self.reviews.average(:stars).to_f.round(2)
     end 
 
 

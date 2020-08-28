@@ -6,14 +6,19 @@ class BooksController < ApplicationController
         @search = params[:search] 
         if !params[:genre].blank?
             @books = Book.where(genre: params[:genre]) 
+        elsif !params[:ratings].blank?
+            @books = Book.filter_by_rating
         elsif !params[:search].blank?
-            @books = Book.search(@search) 
+            @books = Book.search(@search).paginate(page: params[:page], per_page: 9)
         else 
             @books = Book.sort_by_title
         end 
     end 
 
-
+    def recommended 
+        @books = Book.filter_by_rating
+    end 
+    
     def new
         @book = Book.new 
         authorize @book

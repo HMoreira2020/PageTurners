@@ -1,0 +1,7 @@
+<h2>Highest Rated Books</h2> 
+
+<% @books.each do |b| %>
+    <strong>Title:</strong><%= link_to b.title, book_path(b) %><br>
+  <%= render partial: 'books', locals: {book: b} %>
+  <%= link_to "See more", book_path(b) %><br><br>
+<%end%>

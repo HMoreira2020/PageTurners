@@ -2,18 +2,14 @@
 <h3>Search Books</h3>
 <%= form_tag books_path, method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: "Enter a Title or Author"  %> 
+  <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank:  'Select Genre' %>
   <%= submit_tag ("Search") %> 
 <%end%> <br>
 
+
+
 <div>
 
-  <h3>Filter books:</h3>
-  <%= form_tag("/books", method: "get") do %>
-    <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
-</div><br>
- 
   <% if @books.empty? %> 
     <div>0 Books match your search </div>
   <%else%>  
@@ -27,3 +23,5 @@
 <% if admin? %>
 <%= link_to "Add a New book", new_book_path %> <br> 
 <%end%>
+
+</div>

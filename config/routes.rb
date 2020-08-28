@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create'
+  get '/recommended', to: 'books#recommended'
 
   resources :genres
   
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     resources :books, only: [:destroy] 
   end
   
+
 
   
   

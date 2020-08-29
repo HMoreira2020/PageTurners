@@ -1,6 +1,8 @@
+<div class="title-container">
 <h1>Edit Book</h1>
+</div>
 <%= render partial: "form", locals: {book: @book} %> 
 
 <%= form_tag book_path(@book), method: "delete", data: { confirm: 'Are you sure?' }  do %>
-    <%= submit_tag "Delete This Book" %>
+    <%= submit_tag "Delete This Book", class: "btn btn-primary" %>
 <% end %>

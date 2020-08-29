@@ -47,16 +47,5 @@
 </section>
 
 
-
-<footer class="logged-in">
-<% if logged_in? %>
-  <% if current_user.username != nil %>
-    <h4>You are signed in as <%= current_user.username %></h4>
-  <%else%>
-    <h4>You are signed in as <%= current_user.name %></h4>
-  <%end%>
-<%end%>
-</footer>
-
   </body>
 </html>

@@ -1,4 +1,22 @@
+<div class="title-container">
 <h1>Browse By Genre</h1>
-<% @genres.each do |genre| %>
-    <%= link_to genre.name, genre_path(genre) %><br> 
-<%end%>
+<% if admin? %> 
+<div class="admin">
+    <%= link_to "Add New Genre", new_genre_path(@genre), class: "btn btn-default"  %> 
+<% end %>
+</div>
+</div>
+
+<div class="genres">  
+  <% @genres.each do |genre| %>
+    <div class="genre">
+      <div class="thumbnail">
+        <div class="caption">
+            <%= link_to genre.name, genre_path(genre) %>
+        </div>
+      </div>
+    </div>
+  <%end%>
+
+
+ 

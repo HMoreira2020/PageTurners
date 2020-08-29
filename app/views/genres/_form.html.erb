@@ -1,5 +1,8 @@
+<%= render "errors/error", model: genre %>
 <%= form_for genre do |f| %> 
+    <div class="form-group">
     <%= f.label :name %> 
-    <%= f.text_field :name %>
-<%= f.submit %> 
+    <%= f.text_field :name, class: "form-control"  %>
+    </div>
+<%= f.submit class: "btn btn-primary" %> 
 <%end%> 

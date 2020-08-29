@@ -1,2 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.title-container {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; 
+
+  .admin {
+    margin: 0;
+  }
+
+  .user-actions {
+    margin: 0;
+  }
+}

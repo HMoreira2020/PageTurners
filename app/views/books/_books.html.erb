@@ -1,7 +1,7 @@
 <div>
   Author: <%= book.author %><br>
   Genre:  <%= link_to book.genre.name, genre_path(book.genre) %><br>
-  Synopsis: <%= book.synopsis %><br>
+  Synopsis: <%= truncate(book.synopsis, length: 300) %><br>
   <% if book.reviews.present? %> 
     Average Rating: <%= book.average_rating %><br>
     <%= stars(book.average_rating) %>

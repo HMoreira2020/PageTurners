@@ -6,7 +6,7 @@
     <%end%>
     <% if @user == current_user %> 
         <div class="user-actions">
-            <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %>
+            <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %><br> 
             <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
         <%end%>
         </div>

@@ -1,0 +1,11 @@
+<tbody>
+<tr>
+  <th scope="row"></th>
+  <td><%= link_to truncate(book.title), book_path(book) %></%></td>
+  <td><%= book.author %></td>
+  <td><%= link_to book.genre.name, genre_path(book.genre) %></td>
+  <td><%= truncate(book.synopsis, length: 300) %></td>
+  <td><%= book.average_rating %></td>
+  <td><%= stars(book.average_rating) %></td>
+</tr>
+</tbody>

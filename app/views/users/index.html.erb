@@ -10,14 +10,15 @@
           <h3><%= link_to user.username, user_path(user) %></h3>
             <% if user.lists.present? %>
             <div class="lists">
+              <ul>
                 <% user.lists.each do |list| %> 
-                    <div class="list">
-                        <p><%= link_to list.title, user_list_path(user, list) %> </p>
-                    </div>
+                  <li><%= link_to list.title, user_list_path(user, list) %> </li>
                 <%end%>
-            </div>
-            <%else%>
-                No Lists yet
+              </ul>
+              <%else%>
+                <ul>
+                  <li>No Lists yet
+                </ul>
             <%end%>
         </div>
       </div>

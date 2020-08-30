@@ -9,21 +9,19 @@
   </div>
 </div>
 
-
-  <% if @books.empty? %> 
-    <div>0 Books match your search </div>
-  <%else%> 
-    <div class="books">  
-      <% @books.each do |b| %>
-        <div class="book">
-          <div class="thumbnail">
-            <div class="caption">
-              <h3><%= link_to truncate(b.title), book_path(b) %></h3>
-              <p><%= render partial: 'books', locals: {book: b} %></p>
-              <p><%= link_to "See more", book_path(b), class: "btn btn-default"  %></p>
-            </div>
-          </div>
-        </div>
-      <%end%>
-  <% end %> 
-
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Books</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Synopsis</th>
+      <th scope="col">Average Rating</th>
+      <th scope="col">Rating</th>
+      </tr>
+   </thead>
+    <% @books.each do |b| %>
+      <%= render partial: 'table', locals: {book: b} %>
+    <%end%>
+  

@@ -1,3 +1,8 @@
-<h2><%= link_to @book.title, book_path(@book) %> by <%= @book.author %></h2> 
+
+
+<div class="title-container">
+<h3><%= link_to @book.title, book_path(@book) %> by <%= @book.author %></h3>
+
+</div>
 
 <%= render partial: "form", locals: {book: @book, review: @review} %> 

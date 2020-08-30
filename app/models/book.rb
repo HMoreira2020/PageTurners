@@ -24,10 +24,16 @@ class Book < ApplicationRecord
     def average_rating 
         self.reviews.average(:stars).to_f.round(2)
     end 
+ 
+    def already_on_list?(list) #call book.already_on_list(@list)
+        list.books.include?(self) 
+    end 
 
-
-
-
-
+    def add_book(list)
+        list.books << self
+        list.save 
+    end 
 
 end
+
+

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if request.env["omniauth.auth"] != nil && request.env["omniauth.auth"][:provider] == 'facebook'
+        if auth != nil && auth[:provider] == 'facebook'
             @user = User.create_by_facebook_omniauth(auth)
             session[:user_id] = @user.id
             redirect_to user_path(@user)

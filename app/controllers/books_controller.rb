@@ -51,7 +51,7 @@ class BooksController < ApplicationController
         else
             authorize @book 
             if  @book.update(book_params) 
-                redirect_to book_path(@book), alert: "Book successfully updated"
+                redirect_to book_path(@book), notice: "Book successfully updated"
             else 
                 render :edit, alert: "All fields required"
             end
@@ -69,7 +69,7 @@ class BooksController < ApplicationController
             @book.destroy 
             redirect_to books_path, notice: 'Book was successfully destroyed.'
         end 
-        #why can't I do BooksList.where(book_id: book.id, list_id: list.id).destroy all - gave me no such colum books_lists error
+        #is it better to do BooksList.where(book_id: book.id, list_id: list.id).destroy all - must take off dependable destroy to do it
     end 
 
 
@@ -83,21 +83,14 @@ class BooksController < ApplicationController
         @book = Book.find_by(id: params[:id])
     end 
     
-    #do these go in the book.rb? 
-    def already_on_list?(book, list)
-        list.books.include?(book) 
-    end 
-    
+    #is this the right spot for this helper? 
     def add_book_to_list(book, list)
-        if already_on_list?(book, list)
-            redirect_to user_list_path(current_user, list), notice: "You have already added this book to #{list.title}"
+        if book.already_on_list?(list)
+            redirect_to user_list_path(current_user, list), alert: "You have already added this book to #{list.title}"
         else 
-            list.books << book
-            list.save 
+            book.add_book(list)
             redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
         end
     end
-
     
-
 end

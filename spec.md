@@ -19,6 +19,11 @@ Specs:
 
 Confirm:
 - [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
+- [x] Limited logic in controllers
 - [ ] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+
+- [ ] FIX IMAGES FOR USERS ? 
+- [ ] GOOGLE BOOKS API 
+- [ ] use google books api for book searches, displaying images, adding books to list
+- [ ] users show page buttons  

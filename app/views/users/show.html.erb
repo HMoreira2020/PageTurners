@@ -4,14 +4,7 @@
     <% else %> 
         <h2><%= @user.username%>'s < Lists</h2>
     <%end%>
-    <% if @user == current_user %> 
-        <div class="user-actions">
-            <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %><br> 
-            <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
-        <%end%>
-        </div>
-    </div>
-
+</div>
 
     <% if @user.lists.empty? %> 
         <%= @user.username%> has no lists yet.
@@ -27,6 +20,13 @@
         </div>
       <%end%>
     <%end%>
+
+<% if @user == current_user %> 
+    <div class="user-actions">
+        <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %><br> 
+        <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+  </div>
+<%end%>
 
 
    

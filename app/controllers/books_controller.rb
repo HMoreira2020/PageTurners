@@ -58,7 +58,7 @@ class BooksController < ApplicationController
         end
     end
 
-    def destroy
+    def destroy #delete a book off of a list or delete a book as admin
         if params[:list_id] != nil
             book = Book.find_by(id: params[:id])
             list = List.find_by(id: params[:list_id])

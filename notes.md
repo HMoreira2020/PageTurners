@@ -21,63 +21,14 @@ Notes:
 index.  
 
 
-- [ ] STYLING -see below 
-- [ ] FIX IMAGES FOR USERS ? 
-- [ ] GOOGLE BOOKS API 
-- [ ]  use google books api for book searches, displaying images, adding books to list
+
+How do I fix the buttons on the users show page to be next to one another 
+do I need to use more helpers? Dry up views conditionals? 
+google api
 
 
-STYLE: 
-fix books show page 
-fix lists show page  edit and delete buttons 
-add dropdown for navbar 
 
 
-books index 
-<div class="title-container">
-  <div class="search">
-    <%= form_tag books_path, method: :get do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Enter a Title or Author"  %> 
-      <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank:  'Select Genre' %>
-      <%= submit_tag ("Search"), class: "btn btn-default" %> 
-    <%end%> 
-    
-  </div>
-  <% if admin? %>
-    <div class="admin">
-      <%= link_to "Add a New book", new_book_path, class: "btn btn-default" %>
-      <%= link_to "Add a New genre", new_genre_path, class: "btn btn-default" %> 
-    <%end%>
-  </div>
-</div>
-
-</div>
 
 
-  <% if @books.empty? %> 
-    <div>0 Books match your search </div>
-  <%else%> 
-    <div class="books">  
-      <% @books.each do |b| %>
-        <div class="book">
-          <div class="thumbnail">
-            <div class="caption">
-              <h3><%= link_to truncate(b.title), book_path(b) %></h3>
-              <p><%= render partial: 'books', locals: {book: b} %></p>
-              <p><%= link_to "See more", book_path(b), class: "btn btn-default"  %></p>
-            </div>
-          </div>
-        </div>
-      <%end%>
-  <% end %> 
-
-  _books 
-  <div>
-  Author: <%= book.author %><br>
-  Genre:  <%= link_to book.genre.name, genre_path(book.genre) %><br>
-  Synopsis: <%= truncate(book.synopsis, length: 300) %><br>
-  <% if book.reviews.present? %> 
-    Average Rating: <%= book.average_rating %><br>
-    <%= stars(book.average_rating) %>
-  <%end%> 
-</div>
+ 

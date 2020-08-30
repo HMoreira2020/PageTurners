@@ -28,34 +28,37 @@
     <%end%>
 <%end%>
 
-<div class="reviews">
-    <h3>Reviews
-        <div class="write-review-link">
-            <%= link_to "Write a Review", new_book_review_path(@book), class: "btn btn-primary"  %> 
-        </div>
-    </h3>
-    <div class="review-details">
-        Average Rating: <%= @book.average_rating %> | <%= @book.reviews.count %> reviews<br> 
-    </div>
+
     
   
-    <% @reviews.each do |review| %> 
-        <div class="review">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4><%= link_to review.user.username, user_path(review.user) %> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%></h4>
-                    <p><%= review.content %></p>
-                    <div class="review-actions">
-                        <%= link_to "see more", review_path(review), class: "btn btn-default"%><br>
-                     <% if policy(review).update? %>
-                        <%= link_to "Edit Review", edit_review_path(review), class: "btn btn-default" %>
-                    </div>
+ 
+<div class="reviews">
+    <div class="thumbnail">
+        <div class="caption">
+            <h3>Reviews
+                <div class="write-review-link">
+                    <%= link_to "Write a Review", new_book_review_path(@book), class: "btn btn-primary"  %> 
+                </div>
+            </h3>
+            <div class="review-details">
+                Average Rating: <%= @book.average_rating %> | <%= @book.reviews.count %> reviews<br> 
+            </div>
+                    <% @reviews.each do |review| %>
+                        <div class="review">
+                            <h4><%= link_to review.user.username, user_path(review.user) %> rated it <%= stars(review.stars) %> stars | <%=review_date(review.created_at)%></h4>
+                            <p><em><%= review.content %></em></p>
+                            <div class="review-actions">
+                                <%= link_to "see more", review_path(review), class: "btn btn-default"%><br>
+                                <% if policy(review).update? %>
+                                    <%= link_to "Edit Review", edit_review_path(review), class: "btn btn-default" %>
+                                <%end%>
+                            </div>
+                        </div>
+                    <%end%>
                 </div>
             </div>
         </div>
-    <%end%>
-<%end%>
-
+        
 
 
 

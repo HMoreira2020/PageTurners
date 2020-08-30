@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
+    skip_before_action :protect_from_forgery, raise: false
     skip_before_action :require_login, only: [:new, :create, :welcome]
+
 
     def welcome
         
@@ -12,15 +14,23 @@ class SessionsController < ApplicationController
     def create
         if auth != nil && auth[:provider] == 'facebook'
             @user = User.create_by_facebook_omniauth(auth)
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            log_in(@user)
+            # session[:user_id] = @user.id
+            # redirect_to user_path(@user)
+        elsif auth != nil && auth[:provider] == 'google'
+            raise params
+            @user = User.create_by_google_omniauth(auth)
+            log_in(@user)
+            # session[:user_id] = @user.id
+            # redirect_to user_path(@user)
         else
             @user = User.find_by(username: params[:user][:username])
             if @user && @user.authenticate(params[:user][:password])
-                session[:user_id] = @user.id
-                redirect_to user_path(@user)
+                log_in(@user)
+                # session[:user_id] = @user.id
+                # redirect_to user_path(@user)
             else 
-                flash[:alert] = "Login is incorrect"
+                flash[:danger] = "Login is incorrect"
                 redirect_to login_path
             end 
         end 
@@ -33,9 +43,29 @@ class SessionsController < ApplicationController
 
     private 
 
-
-    
     def auth
         request.env['omniauth.auth']
     end
+
+    def log_in(user)
+        session[:user_id] = user.id
+        redirect_to user_path(user)
+      end 
 end
+
+# def create
+#     if auth != nil && auth[:provider] == 'facebook'
+#         @user = User.create_by_facebook_omniauth(auth)
+#         session[:user_id] = @user.id
+#         redirect_to user_path(@user)
+#     else
+#         @user = User.find_by(username: params[:user][:username])
+#         if @user && @user.authenticate(params[:user][:password])
+#             session[:user_id] = @user.id
+#             redirect_to user_path(@user)
+#         else 
+#             flash[:danger] = "Login is incorrect"
+#             redirect_to login_path
+#         end 
+#     end 
+# end

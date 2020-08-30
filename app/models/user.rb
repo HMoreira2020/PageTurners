@@ -23,6 +23,14 @@ class User < ApplicationRecord
         end
     end
 
+    def self.create_by_google_omniauth(auth)
+        self.where(email: auth[:info][:email]).first_or_create do |u|
+            u.name = auth['info']['name']
+            u.image = auth['info']['image']
+            u.password = SecureRandom.hex
+        end
+    end
+
    def can_review?(book)
         book.reviewers.include?(self) ? false : true 
    end 

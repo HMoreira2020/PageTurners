@@ -27,6 +27,11 @@ do I need to use more helpers? Dry up views conditionals?
 google api
 
 
+future goals 
+if a user reviews a book it's automatically added to their read list 
+read list displays with count of books 
+rank users on most books read 
+rank users on most books reviewed 
 
 
 

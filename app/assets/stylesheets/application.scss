@@ -12,9 +12,36 @@
   }
 
   .user-actions {
+    float: right;
     margin: 0;
   }
 }
+
+h3 {
+  display:inline;
+  margin-bottom: 0;
+  
+  .write-review-link {
+    float: right;
+    margin-left: 20px;
+    
+  }
+}
+.form-group {
+  width: 150px;
+  
+}
+
+.add-to-list-form {
+  margin: 20px
+ 
+}
+
+.review-details {
+  margin-bottom: 20px;
+}
+
+
 
 .books {
   display: flex;
@@ -23,6 +50,17 @@
 }
 
 .book {
+  width: 30%;
+  min-width: 300px;
+}
+
+.lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.list {
   width: 30%;
   min-width: 300px;
 }

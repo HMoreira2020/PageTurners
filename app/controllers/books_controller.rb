@@ -9,7 +9,7 @@ class BooksController < ApplicationController
         elsif !params[:ratings].blank?
             @books = Book.filter_by_rating
         elsif !params[:search].blank?
-            @books = Book.search(@search).paginate(page: params[:page], per_page: 9)
+            @books = Book.search(@search)
         else 
             @books = Book.sort_by_title
         end 

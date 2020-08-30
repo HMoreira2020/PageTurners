@@ -21,16 +21,15 @@ Notes:
 index.  
 
 
-- [ ] FILTER BY RATING ON HOMEPAGE
-- [ ] STYLING
+- [ ] STYLING -see below 
 - [ ] FIX IMAGES FOR USERS ? 
 - [ ] GOOGLE BOOKS API 
 - [ ]  use google books api for book searches, displaying images, adding books to list
 
-iterate through Books.all 
-grab each books reviews
-grab the total stars for the book 
-avg the stars 
-order them in desc order 
+
+STYLE: 
+fix books show page 
+fix lists show page  edit and delete buttons 
+add dropdown for navbar 
 
 

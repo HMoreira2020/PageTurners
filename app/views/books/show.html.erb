@@ -1,42 +1,61 @@
-<h1>Books < <%=@book.title%></h1>
-<% if policy(@book).update? %> 
-    <%= link_to "Edit Book", edit_book_path(@book) %> 
-<% end %>
+<div class="title-container">
+    <h1>Books < <%=@book.title%></h1>
+    <% if policy(@book).update? %> 
+    <div class="admin">
+        <%= link_to "Edit Book", edit_book_path(@book), class: "btn btn-default" %> 
+    <% end %>
+    </div>
+</div>
 
 <div class="book">
     <%= render partial: 'books', locals: {book: @book} %>
 </div>
 
-<div class="add-to-list_form">
+<div class="add-to-list-form">
     <% if current_user.lists.empty? %>
         <%= link_to "Create a List", new_user_list_path(current_user, @list), class: "btn btn-default" %> 
     <% else %> 
+    
     <%=form_for @book do |f| %>
-        <%= f.collection_select :lists, current_user.lists, :id, :title, {:prompt => 'Add this Book to a List' } %> 
-        <%= f.submit "Add to List" %>
+        <div class="form-group">
+        <%= f.collection_select :lists, current_user.lists, :id, :title, {:prompt => 'Add this Book to a List' }, class: "form-control" %> 
+        </div> 
+        
+        <div class="actions">
+        <%= f.submit "Add to List", class: "btn btn-primary" %>
+        </div>
+        </div>
     <%end%>
-    <%end%>
-</div>
-<%= link_to "Write a Review", new_book_review_path(@book), class: "btn btn-default"  %> 
+<%end%>
 
 <div class="reviews">
-    <h3>Reviews</h3> 
-        <div class="review-count">
-        <%= @book.reviews.count %> reviews<br> 
+    <h3>Reviews
+        <div class="write-review-link">
+            <%= link_to "Write a Review", new_book_review_path(@book), class: "btn btn-primary"  %> 
         </div>
+    </h3>
+    <div class="review-details">
+        Average Rating: <%= @book.average_rating %> | <%= @book.reviews.count %> reviews<br> 
+    </div>
+    
   
     <% @reviews.each do |review| %> 
         <div class="review">
-            <h4><%= link_to review.user.username, user_path(review.user) %> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%></h4>
-            <%= review.content %>
-        <p class="review-actions">
-            <%= link_to "see more", review_path(review), class: "btn btn-default"%><br>
-            <% if policy(review).update? %>
-                <%= link_to "Edit Your Review", edit_review_path(review), class: "btn btn-default" %>
-            <%end%>
-        </ul>
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4><%= link_to review.user.username, user_path(review.user) %> rated it <%= stars(review.stars) %> stars - <%=review_date(review.created_at)%></h4>
+                    <p><%= review.content %></p>
+                    <div class="review-actions">
+                        <%= link_to "see more", review_path(review), class: "btn btn-default"%><br>
+                     <% if policy(review).update? %>
+                        <%= link_to "Edit Review", edit_review_path(review), class: "btn btn-default" %>
+                    </div>
+                </div>
+            </div>
+        </div>
     <%end%>
-</div>
+<%end%>
+
 
 
 

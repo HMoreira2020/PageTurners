@@ -1,13 +1,28 @@
+<div class="title-container">
 <h2>Readers</h2>
+</div>
 
-<% @users.each do |user| %> 
-    <%= link_to user.username, user_path(user) %><br>
-        <% if user.lists.present? %>
-            <% user.lists.each do |list| %> 
-                <%= link_to list.title, user_list_path(user, list) %> <br>
+<div class="users">  
+  <% @users.each do |user| %>
+    <div class="user">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3><%= link_to user.username, user_path(user) %></h3>
+            <% if user.lists.present? %>
+            <div class="lists">
+                <% user.lists.each do |list| %> 
+                    <div class="list">
+                        <p><%= link_to list.title, user_list_path(user, list) %> </p>
+                    </div>
+                <%end%>
+            </div>
+            <%else%>
+                No Lists yet
             <%end%>
-    <%else%>
-        No lists yet.<br>
-    <%end%><br>
-<%end%> 
+        </div>
+      </div>
+    </div>
+  <%end%>
+
+
 

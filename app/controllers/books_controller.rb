@@ -60,10 +60,10 @@ class BooksController < ApplicationController
 
     def destroy #delete a book off of a list or delete a book as admin
         if params[:list_id] != nil
-            book = Book.find_by(id: params[:id])
-            list = List.find_by(id: params[:list_id])
-            list.books.delete(@book) 
-            redirect_to user_list_path(current_user, list), notice: "#{book.title} was removed from this list."
+            @list = List.find_by(id: params[:list_id])
+            authorize @list
+            @list.books.delete(@book) 
+            redirect_to user_list_path(current_user, @list), notice: "#{@book.title} was removed from this list."
         else 
             authorize @book 
             @book.destroy 

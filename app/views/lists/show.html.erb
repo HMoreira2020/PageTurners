@@ -20,8 +20,10 @@
     <th scope="col">Synopsis</th>
     <th scope="col">Average Rating</th>
     <th scope="col">Rating</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
     </tr>
  </thead>
   <% @list.books.each do |b| %>
-    <%= render partial: 'books/table', locals: {book: b} %>
+    <%= render partial: 'lists/table', locals: {book: b, list: @list} %>
   <%end%>

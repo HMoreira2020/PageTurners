@@ -28,7 +28,7 @@ class BooksController < ApplicationController
         @book = Book.new(book_params)
         authorize @book
         if @book.save 
-            redirect_to book_path(@book), notice: "Book successfully created"
+            redirect_to book_path(@book), success: "Book successfully created"
         else 
             render :new
         end  
@@ -51,7 +51,7 @@ class BooksController < ApplicationController
         else
             authorize @book 
             if  @book.update(book_params) 
-                redirect_to book_path(@book), notice: "Book successfully updated"
+                redirect_to book_path(@book), success: "Book successfully updated"
             else 
                 render :edit, alert: "All fields required"
             end
@@ -63,11 +63,11 @@ class BooksController < ApplicationController
             @list = List.find_by(id: params[:list_id])
             authorize @list
             @list.books.delete(@book) 
-            redirect_to user_list_path(current_user, @list), notice: "#{@book.title} was removed from this list."
+            redirect_to user_list_path(current_user, @list), success: "#{@book.title} was removed from this list."
         else 
             authorize @book 
             @book.destroy 
-            redirect_to books_path, notice: 'Book was successfully destroyed.'
+            redirect_to books_path, success: 'Book was successfully destroyed.'
         end 
         #is it better to do BooksList.where(book_id: book.id, list_id: list.id).destroy all - must take off dependable destroy to do it
     end 
@@ -89,7 +89,7 @@ class BooksController < ApplicationController
             redirect_to user_list_path(current_user, list), alert: "You have already added this book to #{list.title}"
         else 
             book.add_book(list)
-            redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
+            redirect_to user_list_path(current_user, list), success: "#{book.title} successfully added to your list"
         end
     end
     

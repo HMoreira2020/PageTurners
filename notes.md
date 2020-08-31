@@ -22,6 +22,7 @@ index.
 
 
 
+
 How do I fix the buttons on the users show page to be next to one another 
 do I need to use more helpers? Dry up views conditionals? 
 google api
@@ -33,6 +34,7 @@ read list displays with count of books
 rank users on most books read 
 rank users on most books reviewed 
 
+limit books per page 
 
 
 

@@ -34,6 +34,17 @@ class Book < ApplicationRecord
         list.save 
     end 
 
+
+    def self.find_or_create_by_google(query)
+        results = GoogleApi.search(query)
+        results.each do |book_hash| 
+            self.find_or_create_by(book_hash)
+        end 
+    end 
+     
+
+
+
 end
 
 

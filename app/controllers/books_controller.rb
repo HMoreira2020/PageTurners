@@ -87,7 +87,7 @@ class BooksController < ApplicationController
     #is this the right spot for this helper? 
     def add_book_to_list(book, list)
         if book.already_on_list?(list)
-            redirect_to user_list_path(current_user, list), alert: "You have already added this book to #{list.title}"
+            redirect_to user_list_path(current_user, list), notice: "You have already added this book to #{list.title}"
         else 
             book.add_book(list)
             redirect_to user_list_path(current_user, list), success: "#{book.title} successfully added to your list"

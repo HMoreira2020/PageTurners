@@ -3,7 +3,7 @@ class Book < ApplicationRecord
     has_many :books_lists
     has_many :lists, through: :books_lists 
     has_many :users, through: :lists 
-    has_many :reviews #from different users
+    has_many :reviews, dependent: :destroy
     has_many :reviewers, through: :reviews, source: :user #book.reviewers users that have reviewed it 
     
     validates :title, :author, :synopsis, presence: true 
@@ -17,9 +17,9 @@ class Book < ApplicationRecord
    
     def self.search(search)
         search.blank? ? self.all : self.all.where("lower(title) LIKE ? or lower(author) LIKE ?", "%#{search}%", "%#{search}%")
-    end
+    end 
 
-    def average_rating 
+    def avg_rating 
         self.reviews.average(:stars).to_f.round(2) 
     end 
  

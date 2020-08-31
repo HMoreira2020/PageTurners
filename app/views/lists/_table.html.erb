@@ -1,6 +1,7 @@
 <tbody>
 <tr>
   <th scope="row"></th>
+  <td><img src=<%= book.image_url%> class="rounded float-left" class></td>
   <td><%= link_to truncate(book.title), book_path(book) %></%></td>
   <td><%= book.author %></td>
   <td><%= link_to book.genre.name, genre_path(book.genre) %></td>

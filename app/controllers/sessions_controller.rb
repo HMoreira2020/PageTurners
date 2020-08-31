@@ -17,8 +17,7 @@ class SessionsController < ApplicationController
             log_in(@user)
             # session[:user_id] = @user.id
             # redirect_to user_path(@user)
-        elsif auth != nil && auth[:provider] == 'google'
-            raise params
+        elsif auth != nil && auth[:provider] == 'google_oauth2'
             @user = User.create_by_google_omniauth(auth)
             log_in(@user)
             # session[:user_id] = @user.id
@@ -47,10 +46,10 @@ class SessionsController < ApplicationController
         request.env['omniauth.auth']
     end
 
-    def log_in(user)
-        session[:user_id] = user.id
-        redirect_to user_path(user)
-      end 
+    # def log_in(user)
+    #     session[:user_id] = user.id
+    #     redirect_to user_path(user.id)
+    #   end 
 end
 
 # def create

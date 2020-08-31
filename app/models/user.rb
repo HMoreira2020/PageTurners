@@ -17,6 +17,7 @@ class User < ApplicationRecord
     def self.create_by_facebook_omniauth(auth)
         self.where(email: auth[:info][:email]).first_or_create do |u|
             u.name = auth['info']['name']
+            u.username = auth['info']['name'].delete(' ')
             u.image = auth['info']['image']
             u.uid = auth['info']['uid']
             u.password = SecureRandom.hex
@@ -26,6 +27,7 @@ class User < ApplicationRecord
     def self.create_by_google_omniauth(auth)
         self.where(email: auth[:info][:email]).first_or_create do |u|
             u.name = auth['info']['name']
+            u.username = auth['info']['name']
             u.image = auth['info']['image']
             u.password = SecureRandom.hex
         end

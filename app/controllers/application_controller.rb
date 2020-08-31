@@ -1,18 +1,13 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     include Pundit
-    helper_method :current_user, :logged_in?, :require_login, :admin?, :sign_in(user)
+    helper_method :current_user, :logged_in?, :require_login, :admin?
     before_action :require_login
   
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
-
-  def sign_in(user)
-    session[:user_id] = user.id
-    redirect_to user_path(user)
-  end 
 
   def logged_in? 
     current_user != nil 

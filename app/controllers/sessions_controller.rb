@@ -46,10 +46,10 @@ class SessionsController < ApplicationController
         request.env['omniauth.auth']
     end
 
-    # def log_in(user)
-    #     session[:user_id] = user.id
-    #     redirect_to user_path(user.id)
-    #   end 
+    def log_in(user)
+        session[:user_id] = user.id
+        redirect_to user_path(user.id)
+    end 
 end
 
 # def create

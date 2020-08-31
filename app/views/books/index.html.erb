@@ -30,7 +30,9 @@
 <table class="table table-hover">
 <thead>
   <tr>
+    
     <th scope="col">Books</th>
+    <th scope="col">Cover</th>
     <th scope="col">Title</th>
     <th scope="col">Author</th>
     <th scope="col">Genre</th>
@@ -43,3 +45,6 @@
   <% @books.each do |b| %>
     <%= render partial: 'table', locals: {book: b} %>
   <%end%>
+
+
+  

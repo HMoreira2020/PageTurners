@@ -2,10 +2,9 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     def index #need to dry up code here, new action to handle google search or all searches?
-        @genres = Genre.all 
-        raise params
+        @genres = Genre.all
         if !params[:query].blank?
-            @books = Book.find_or_create_by_google(params[:query])
+            @books = Book.create_book_from_google(params[:query])
         elsif !params[:genre].blank?
             @books = Book.where(genre: params[:genre]) 
         elsif !params[:ratings].blank?

@@ -5,15 +5,16 @@ class GoogleApi
 attr_reader :results
 
 def self.search(query)  #GoogleApi.search(search) gives me the books_array 
-    @results = HTTParty.get(BASE_URL + "#{query}" + "&maxResults=10" + API_PARTIAL)
+    results = HTTParty.get(BASE_URL + "#{query}" + "&maxResults=10" + API_PARTIAL)
     books_array = []
-    @results["items"].each do |item|
+    results["items"].each do |item|
     book_hash = {
         :title => item["volumeInfo"]["title"],
-        :author => item["volumeInfo"]["authors"],
+        :author => item["volumeInfo"]["authors"].first,
         :synopsis => item["volumeInfo"]["description"], 
-        :image => item["volumeInfo"]["imageLinks"]["thumbnail"],
-        :genre => item["volumeInfo"]["categories"]
+        :image_url => item["volumeInfo"]["imageLinks"]["thumbnail"],
+        :genre => Genre.find_or_create_by(name: item["volumeInfo"]["categories"].first),
+        :average_rating => item["volumeInfo"]["averageRating"]
         }
     books_array << book_hash 
     end
@@ -21,12 +22,8 @@ def self.search(query)  #GoogleApi.search(search) gives me the books_array
 end 
 
 
+
 end
     
     
-    # HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=" + params[:search] + "&maxResults=10" + "&key=AIzaSyAv3lmqJ7_CRldsUOz8K2-otEw1EPj_NTg")
-    # item["volumeInfo"]["averageRating"]
-    # genre => item["volumeInfo"]["categories"
   
-    
-    # GoogleApi.search(query) #=> an array of hashes that represent books 

@@ -33,7 +33,6 @@ class Book < ApplicationRecord
     end 
 
 
-    
     def self.create_book_from_google(query)
         books_array = GoogleApi.search(query)
         books = books_array.map do |book_hash| 

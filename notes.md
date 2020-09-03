@@ -19,13 +19,10 @@ Notes:
 - [x] Refactor user show page/authorization needed
 - [x] REquire login before all actions besides login/signup/homepage/books 
 index.  
-
-
-
-
+LIMIT BOOKS PER PAGE on BOOKS INDEX 
 How do I fix the buttons on the users show page to be next to one another 
 do I need to use more helpers? Dry up views conditionals? 
-google api
+GET USER IMAGE WORKING TO DISPLAY 
 
 
 future goals 
@@ -34,7 +31,10 @@ read list displays with count of books
 rank users on most books read 
 rank users on most books reviewed 
 
-limit books per page 
+ <%= form_tag list_path(@list), method: "delete" do %>
+                <%= submit_tag "Delete List",  class: "btn btn-primary" %>
+            <% end %>
+
 
 
 

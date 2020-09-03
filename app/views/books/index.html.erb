@@ -1,17 +1,18 @@
 <div class="title-container">
+
   <div class="search">
-    <%= form_tag books_path, method: :get do %>
-      <div class="form-group">
-      <%= text_field_tag :search, params[:search], placeholder: "Enter a Title or Author"  %> 
+    <%= form_tag(books_path, method: :get, class: 'navbar-form navbar-left') do %>
+      <div class="input-group">  
+      <%= text_field_tag :search, params[:search], placeholder: "Enter a Title or Author", class: "form-control"  %> 
       </div>
-      <div class="form-group">
-      <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank:  'Select Genre' %>
+      <div class="input-group">  
+      <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank:  'Select Genre', class: "form-control" %>
       </div>
-      <div class="form-group">
-      <%= text_field_tag :query, nil, placeholder: 'Search Google Books' %>
+      <div class="input-group">  
+      <%= text_field_tag :query, nil, placeholder: 'Search Google Books', class: "form-control" %>
       </div>
 
-      <%= submit_tag ("Search"), class: "btn btn-default" %> 
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
     <%end%> 
 
     

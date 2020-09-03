@@ -3,9 +3,7 @@
     <div class="user-actions">
         <% if policy(@list).update? && policy(@list).destroy? %>
             <%= link_to "Edit List", edit_list_path(@list), class: "btn btn-primary" %>
-            <%= form_tag list_path(@list), method: "delete" do %>
-                <%= submit_tag "Delete List",  class: "btn btn-primary" %>
-            <% end %>
+            <%= link_to "Delete List", list_path(@list), method: "delete", class: "btn btn-primary" %>
         <%end%>
     </div>
 </div>

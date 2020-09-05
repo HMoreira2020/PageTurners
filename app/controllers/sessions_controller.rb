@@ -14,18 +14,18 @@ class SessionsController < ApplicationController
     def create
         if auth != nil && auth[:provider] == 'facebook'
             @user = User.create_by_facebook_omniauth(auth)
-            log_in(@user)
+            login(@user)
             # session[:user_id] = @user.id
             # redirect_to user_path(@user)
         elsif auth != nil && auth[:provider] == 'google_oauth2'
             @user = User.create_by_google_omniauth(auth)
-            log_in(@user)
+            login(@user)
             # session[:user_id] = @user.id
             # redirect_to user_path(@user)
         else
             @user = User.find_by(username: params[:user][:username])
             if @user && @user.authenticate(params[:user][:password])
-                log_in(@user)
+                login(@user)
                 # session[:user_id] = @user.id
                 # redirect_to user_path(@user)
             else 
@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
         request.env['omniauth.auth']
     end
 
-    def log_in(user)
+    def login(user)
         session[:user_id] = user.id
         redirect_to user_path(user.id)
     end 

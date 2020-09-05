@@ -1,0 +1,12 @@
+<div class="list">  
+<% @user.lists.each do |list| %>
+  <div class="list">
+    <div class="thumbnail">
+      <div class="caption">
+        <p><%= link_to list.title, user_list_path(@user, list) %></p>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+

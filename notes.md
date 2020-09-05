@@ -37,5 +37,37 @@ rank users on most books reviewed
 
 
 
+user show page
+ <div class="title-container">
+<% if @user == current_user %>
+    <h2>Your Lists</h2>
+<% else %> 
+    <h2><%= @user.username%>'s Lists</h2>
+<%end%>
+</div>
 
- 
+<% if @user.lists.empty? %> 
+  <% if @user == current_user %>
+    You have no lists yet. 
+  <%else %>
+    <%= @user.username%> has no lists yet.
+  <%end%>
+<%else%> 
+<div class="list">  
+  <% @user.lists.each do |list| %>
+    <div class="list">
+      <div class="thumbnail">
+        <div class="caption">
+          <p><%= link_to list.title, user_list_path(@user, list) %></p>
+        </div>
+      </div>
+    </div>
+  <%end%>
+<%end%>
+
+<% if @user == current_user %> 
+<div class="user-actions">
+    <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %><br> 
+    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+</div>
+<%end%>

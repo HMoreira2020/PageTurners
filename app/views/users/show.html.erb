@@ -1,7 +1,9 @@
 <div class="title-container">
     <% if @user == current_user %>
       <h2>Your Lists</h2>
+    <%end%>
 </div>
+    <% if @user == current_user %>
         <% if @user.lists.empty? %> 
           You have no lists yet. 
         <%else%> 

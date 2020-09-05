@@ -1,5 +1,5 @@
 <div class="title-container">
-    <h1><%= @list.user.username%> < Lists < "<%= @list.title %>"</h1>
+    <h1><%= @list.user.username%>'s List: "<%= @list.title %>"</h1>
     <div class="user-actions">
         <% if policy(@list).update? && policy(@list).destroy? %>
             <%= link_to "Edit List", edit_list_path(@list), class: "btn btn-primary" %>

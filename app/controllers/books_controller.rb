@@ -2,15 +2,12 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
 
     
-    
     def index #need to dry up code here, new action to handle searches?
         @genres = Genre.all
         if !params[:query].blank?
             @books = Book.create_book_from_google(params[:query])
         elsif !params[:genre].blank?
             @books = Book.where(genre: params[:genre]) 
-        #elsif !params[:ratings].blank?
-            #@books = Book.filter_by_rating
         elsif !params[:search].blank?
             @books = Book.search(params[:search])
         else 
@@ -72,7 +69,7 @@ class BooksController < ApplicationController
             @book.destroy 
             redirect_to books_path, notice: 'Book was successfully destroyed.'
         end 
-        #is it better to do BooksList.where(book_id: book.id, list_id: list.id).destroy all - must take off dependable destroy to do it
+        #BooksList.where(book_id: book.id, list_id: list.id).destroy all - must take off dependable destroy to do it
     end 
 
 
@@ -86,7 +83,7 @@ class BooksController < ApplicationController
         @book = Book.find_by(id: params[:id])
     end 
     
-    #is this the right spot for this helper? 
+    
     def add_book_to_list(book, list)
         if book.already_on_list?(list)
             redirect_to user_list_path(current_user, list), alert: "You have already added this book to #{list.title}"
@@ -95,5 +92,5 @@ class BooksController < ApplicationController
             redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
         end
     end
-    
+ 
 end

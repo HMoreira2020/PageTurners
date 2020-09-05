@@ -1,5 +1,5 @@
 <div class="title-container">
-<h1>Genres < <%=@genre.name%> < Books</h1>
+<h1><%=@genre.name%> Books</h1>
 <% if policy(@genre).update? %> 
 <div class="admin">
     <%= link_to "Edit Genre", edit_genre_path(@genre), class: "btn btn-default"  %> 

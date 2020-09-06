@@ -21,6 +21,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %> 
+            <li> <% if current_user.image.attached? %>
+              <%= image_tag(url_for(current_user.thumbnail), class: 'img-circle') %>
+            <%end%></li>
             <li><%= link_to current_user.username, user_path(current_user) %></li>
             <li><%= link_to "Books", books_path %></li>
             <li><%= link_to "Community", users_path %></li>

@@ -16,8 +16,16 @@
   }
 }
 
-img { 
-  
+.img-circle {
+  border: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  margin-top: 5px;
+  position: relative;
+  height: 35px;
+  width: 35px;
+  z-index: 0;
 }
 
 h3 {

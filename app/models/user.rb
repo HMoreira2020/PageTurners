@@ -38,7 +38,11 @@ class User < ApplicationRecord
    end 
 
    def thumbnail 
-        return self.image.variant(resize_to_limit: [100, 100]).processed 
+        return self.image.variant(resize: '100X100!').processed #checks so image doesn't always have to resize itself. 
+    end 
+
+   def profile 
+        return self.image.variant(resize: '35X35!').processed #checks so image doesn't always have to resize itself. 
    end 
     
    private 

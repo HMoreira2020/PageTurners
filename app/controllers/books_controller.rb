@@ -11,12 +11,12 @@ class BooksController < ApplicationController
         elsif !params[:search].blank?
             @books = Book.search(params[:search])
         else 
-            @books = Book.sort_by_title
+            @pagy, @books = pagy(Book.sort_by_title, items: 10)
         end 
     end 
 
     def recommended 
-        @books = Book.filter_by_rating
+        @books = Book.filter_by_rating #limit 10? do this in book.rb?
     end 
     
     def new

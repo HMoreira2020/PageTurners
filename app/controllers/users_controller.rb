@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.image.attach(params[:user][:image])
         if @user.save 
             login(@user)
             # session[:user_id] = @user.id 
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 
     def update
         @user.update(user_params)
+        @user.image.attach(params[:user][:image])
         if @user.save 
             redirect_to user_path(@user)
         else 

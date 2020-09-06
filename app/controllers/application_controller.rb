@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     include Pundit
+    include Pagy::Backend
     helper_method :current_user, :logged_in?, :require_login, :admin?
     before_action :require_login
   

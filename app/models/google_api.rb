@@ -17,9 +17,9 @@ def self.search(query)  #GoogleApi.search(search) gives me the books_array
     #     }
     book_hash = {}
         book_hash[:title] = item["volumeInfo"]["title"]
-        book_hash[:author] = item["volumeInfo"]["authors"].first
+        book_hash[:author] = item["volumeInfo"]["authors"].first if item["volumeInfo"]["authors"]
         book_hash[:synopsis] = item["volumeInfo"]["description"]
-        book_hash[:image_url] = item["volumeInfo"]["imageLinks"]["thumbnail"] 
+        book_hash[:image_url] = item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"]
         book_hash[:genre] = Genre.find_or_create_by(name: item["volumeInfo"]["categories"].first) if item["volumeInfo"]["categories"]
     books_array << book_hash 
     end
@@ -30,6 +30,5 @@ end
 
 end
     
-    
-#[["Biography & Autobiography"], ["Biography & Autobiography"], ["Biography & Autobiography"], nil, ["Self-Help"], nil, ["Education"], ["Women"], ["History"], ["Education"]]
+
 

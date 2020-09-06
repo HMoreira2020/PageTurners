@@ -25,6 +25,8 @@
       
     <%end%>
 
-
-
+    <% if @user.image.attached? %>
+      <%= image_tag(url_for(@user.image)) %>
+      <%= image_tag(@user.thumbnail) %>
+    <%end%>
   

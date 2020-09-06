@@ -19,10 +19,10 @@ Notes:
 - [x] Refactor user show page/authorization needed
 - [x] REquire login before all actions besides login/signup/homepage/books 
 index.  
-LIMIT BOOKS PER PAGE on BOOKS INDEX 
-How do I fix the buttons on the users show page to be next to one another 
-do I need to use more helpers? Dry up views conditionals? 
+LIMIT BOOKS PER PAGE on BOOKS INDEX and where necessary 
+
 GET USER IMAGE WORKING TO DISPLAY 
+display user images next to their names in user show and users index and in navbar  
 
 
 future goals 
@@ -32,42 +32,8 @@ rank users on most books read
 rank users on most books reviewed 
 
  <%= form_tag list_path(@list), method: "delete" do %>
-                <%= submit_tag "Delete List",  class: "btn btn-primary" %>
-            <% end %>
+    <%= submit_tag "Delete List",  class: "btn btn-primary" %>
+<% end %>
 
 
 
-user show page
- <div class="title-container">
-<% if @user == current_user %>
-    <h2>Your Lists</h2>
-<% else %> 
-    <h2><%= @user.username%>'s Lists</h2>
-<%end%>
-</div>
-
-<% if @user.lists.empty? %> 
-  <% if @user == current_user %>
-    You have no lists yet. 
-  <%else %>
-    <%= @user.username%> has no lists yet.
-  <%end%>
-<%else%> 
-<div class="list">  
-  <% @user.lists.each do |list| %>
-    <div class="list">
-      <div class="thumbnail">
-        <div class="caption">
-          <p><%= link_to list.title, user_list_path(@user, list) %></p>
-        </div>
-      </div>
-    </div>
-  <%end%>
-<%end%>
-
-<% if @user == current_user %> 
-<div class="user-actions">
-    <%= link_to "Create New List", new_user_list_path(@user, @list), class: "btn btn-primary" %><br> 
-    <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
-</div>
-<%end%>

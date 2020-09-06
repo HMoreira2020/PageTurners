@@ -24,9 +24,9 @@ Confirm:
 - [x] Views use partials if appropriate
 
 - [ ] FIX IMAGES FOR USERS ? 
-- [ ] GOOGLE BOOKS API search 
-- [ ] use google books api for book searches, displaying images, adding books to list
-- [ ] users show page buttons  
-- [ ] images for books and users
-- [ ] How to DRY up views, controllers and speed up programs (preload AREL?)
+- [X] GOOGLE BOOKS API search 
+- [X] use google books api for book searches, displaying images, adding books to list
+- [X] users show page buttons  
+- [X] images for books
+- [] (preload AREL?)
 

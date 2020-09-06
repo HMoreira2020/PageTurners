@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 #gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.8'
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -72,3 +73,4 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-google'
 gem 'google-api-client', '~> 0.34'
 gem 'httparty', '~> 0.18.1'
+gem 'pagy', '~> 3.8', '>= 3.8.3'

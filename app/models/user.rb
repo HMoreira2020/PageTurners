@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
     has_secure_password 
     has_one_attached :image
-
+    validate :image_size
     
    
     def self.create_by_facebook_omniauth(auth)
@@ -36,6 +36,15 @@ class User < ApplicationRecord
    def can_review?(book)
         book.reviewers.include?(self) ? false : true 
    end 
+
+   def thumbnail 
+        return self.image.variant(resize_to_limit: [100, 100]).processed 
+   end 
     
+   private 
+
+    def image_size
+        errors.add :image, 'file size too big' if image.blob.byte_size > 4096
+    end
 
 end

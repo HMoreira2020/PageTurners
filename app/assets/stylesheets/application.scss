@@ -22,11 +22,17 @@
   border-radius: 50%;
   display: block;
   margin-top: 5px;
+  margin-bottom: 0;
   position: relative;
   height: 35px;
   width: 35px;
   z-index: 0;
 }
+
+img {
+  margin-bottom: 20px;
+}
+
 
 h3 {
   display:inline;

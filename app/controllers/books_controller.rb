@@ -5,11 +5,11 @@ class BooksController < ApplicationController
     def index #need to dry up code here, new action to handle searches?
         @genres = Genre.all
         if !params[:query].blank?
-            @books = Book.create_book_from_google(params[:query])
+            @pagy, @books = pagy(Book.create_book_from_google(params[:query])) 
         elsif !params[:genre].blank?
-            @books = Book.where(genre: params[:genre]) 
+            @pagy, @books = pagy(Book.where(genre: params[:genre]))
         elsif !params[:search].blank?
-            @books = Book.search(params[:search])
+            @pagy, @books = pagy(Book.search(params[:search]))
         else 
             @pagy, @books = pagy(Book.sort_by_title, items: 10)
         end 

@@ -23,10 +23,4 @@ Confirm:
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
 
-- [ ] FIX IMAGES FOR USERS ? 
-- [X] GOOGLE BOOKS API search 
-- [X] use google books api for book searches, displaying images, adding books to list
-- [X] users show page buttons  
-- [X] images for books
-- [] (preload AREL?)
 

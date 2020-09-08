@@ -19,10 +19,13 @@ Notes:
 - [x] Refactor user show page/authorization needed
 - [x] REquire login before all actions besides login/signup/homepage/books 
 index.  
-LIMIT BOOKS PER PAGE on BOOKS INDEX and where necessary 
+- [x] LIMIT BOOKS PER PAGE on BOOKS INDEX and where necessary
+- [x] GET USER IMAGE WORKING TO DISPLAY 
 
-GET USER IMAGE WORKING TO DISPLAY 
-display user images next to their names in user show and users index and in navbar  
+- [ ] FIX DISPLAY OF SUCCESS ALERTS - why are these the only ones not styled? 
+- [ ] DELETE A USER's PROFILE PIC 
+- [ ] Blog 
+- [ ] Video walkthrough
 
 
 future goals 
@@ -31,9 +34,7 @@ read list displays with count of books
 rank users on most books read 
 rank users on most books reviewed 
 
- <%= form_tag list_path(@list), method: "delete" do %>
-    <%= submit_tag "Delete List",  class: "btn btn-primary" %>
-<% end %>
+
 
 
 

@@ -3,7 +3,8 @@
 <img src=<%= book.image_url%> class="rounded float-left" class>
 <div class="book-display">
   <h2>by <%= book.author %></h2>
-    <h4> Average Rating: <%= book.average_rating %> | <%= stars(book.average_rating) %></h4>
+    <h4> Average Rating: <%= book.pageturners_avg_rating %> | <%= stars(book.pageturners_avg_rating) %></h4>
     Genre:  <%= link_to book.genre.name, genre_path(book.genre) %><br>
   Synopsis: <%= truncate(book.synopsis, length: 300) %><br>
 </div>
+

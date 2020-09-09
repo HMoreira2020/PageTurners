@@ -34,6 +34,8 @@ read list displays with count of books
 rank users on most books read 
 rank users on most books reviewed 
 
+FIX BOOKS table to render ratings based on pageturners, not google.  only display google if no pageturners reviews
+
 
 
 

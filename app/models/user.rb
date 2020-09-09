@@ -38,15 +38,17 @@ class User < ApplicationRecord
    end 
 
    def thumbnail 
-        return self.image.variant(resize: '100X100!').processed #checks so image doesn't always have to resize itself. 
+        return self.image.variant(resize: '100X100!').processed if self.image #checks so image doesn't always have to resize itself. 
     end 
 
    def profile 
-        return self.image.variant(resize: '35X35!').processed #checks so image doesn't always have to resize itself. 
+        return self.image.variant(resize: '35X35!').processed if self.image #checks so image doesn't always have to resize itself. 
    end 
 
     def image_size
-        errors.add :image, 'file size too big' if image.blob.byte_size > 1000000
+        if self.image.attached?
+            errors.add :image, 'file size too big' if image.blob.byte_size > 1000000
+        end 
     end
 
 end

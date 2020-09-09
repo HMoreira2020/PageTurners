@@ -22,7 +22,7 @@
      </div>
 
     <div class="field">
-    <% if user.image %>
+    <% if user.image.attached?  %>
     <%= image_tag(user.thumbnail) %>
     <%end%>
     </div>

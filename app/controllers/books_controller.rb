@@ -44,14 +44,16 @@ class BooksController < ApplicationController
     end
 
     def update #add a book to a list or edit a book as an admin 
-        if params[:book][:lists] != nil  #to add book to a list 
+        if params[:book][:lists].present?  #to add book to a list 
             @list = List.find_by(id: params[:book][:lists])
             authorize @list
             add_book_to_list(@book, @list)
+        elsif params[:book][:lists] == ""
+            redirect_to book_path(@book), :alert => "Please Select a List"
         else
             authorize @book 
             if  @book.update(book_params) 
-                redirect_to book_path(@book), notice: "Book successfully updated"
+                redirect_to book_path(@book), :notice => "Book successfully updated"
             else 
                 render :edit, alert: "All fields required"
             end
@@ -63,7 +65,7 @@ class BooksController < ApplicationController
             @list = List.find_by(id: params[:list_id])
             authorize @list
             @list.books.delete(@book) 
-            redirect_to user_list_path(current_user, @list), :info => "#{@book.title} was removed from this list."
+            redirect_to user_list_path(current_user, @list), :notice => "#{@book.title} was removed from this list."
         else 
             authorize @book 
             @book.destroy 

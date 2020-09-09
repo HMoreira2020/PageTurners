@@ -23,10 +23,10 @@ index.
 - [x] GET USER IMAGE WORKING TO DISPLAY 
 
 - [ ] FIX DISPLAY OF SUCCESS ALERTS - why are these the only ones not styled? 
-- [ ] DELETE or UPDATE USER's PROFILE PIC 
+- [X] UPDATE USER's PROFILE PIC 
 - [X] Blog 
 - [ ] Video walkthrough
-- [ ] Fix upload user image error that happens on signup with image 
+- [X] Fix upload user image error that happens on signup with image 
 
 future goals 
 

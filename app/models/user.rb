@@ -41,7 +41,7 @@ class User < ApplicationRecord
         return self.image.variant(resize: '100X100!').processed if self.image #checks so image doesn't always have to resize itself. 
     end 
 
-   def profile 
+   def profile
         return self.image.variant(resize: '35X35!').processed if self.image #checks so image doesn't always have to resize itself. 
    end 
 

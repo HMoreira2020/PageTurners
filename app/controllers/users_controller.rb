@@ -13,11 +13,8 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        # @user.image.attach(params[:user][:image])
         if @user.save 
             login(@user)
-            # session[:user_id] = @user.id 
-            # redirect_to user_path(@user)
         else 
             render :new, :alert => "All fields required"
         end 
@@ -55,6 +52,6 @@ class UsersController < ApplicationController
     def login(user)
         session[:user_id] = user.id
         redirect_to user_path(user.id)
-      end  
+    end  
     
 end

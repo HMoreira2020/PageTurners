@@ -28,7 +28,7 @@ class GenresController < ApplicationController
         @genre = Genre.find_by(id: params[:id])
         authorize @genre
         if @genre.update(name: params[:genre][:name]) 
-            redirect_to genre_path(@genre), success: 'Genre was successfully updated.'
+            redirect_to genre_path(@genre), notice: 'Genre was successfully updated.'
         else 
             render :edit, alert: "Name required"
         end

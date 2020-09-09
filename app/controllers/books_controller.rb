@@ -63,7 +63,7 @@ class BooksController < ApplicationController
             @list = List.find_by(id: params[:list_id])
             authorize @list
             @list.books.delete(@book) 
-            redirect_to user_list_path(current_user, @list), notice: "#{@book.title} was removed from this list."
+            redirect_to user_list_path(current_user, @list), :info => "#{@book.title} was removed from this list."
         else 
             authorize @book 
             @book.destroy 
@@ -86,10 +86,10 @@ class BooksController < ApplicationController
     
     def add_book_to_list(book, list)
         if book.already_on_list?(list)
-            redirect_to user_list_path(current_user, list), alert: "You have already added this book to #{list.title}"
+            redirect_to user_list_path(current_user, list), :alert => "You have already added this book to #{list.title}"
         else 
             book.add_book(list)
-            redirect_to user_list_path(current_user, list), notice: "#{book.title} successfully added to your list"
+            redirect_to user_list_path(current_user, list), :notice => "#{book.title} successfully added to your list"
         end
     end
  

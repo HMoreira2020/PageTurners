@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
         if current_user.can_review?(@book)
         @review = Review.new(reviews_params)
             if @review.save 
-                redirect_to book_path(@book), success: "You have reviewed #{@book.title}"
+                redirect_to book_path(@book), notice: "You have reviewed #{@book.title}"
             else 
                 render :new, alert: "All fields required"
             end
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
     def update
         authorize @review 
         if @review.update(reviews_params)
-            redirect_to review_path(@review), success: "Your review was successfully updated."
+            redirect_to review_path(@review), notice: "Your review was successfully updated."
         else 
             render :edit, alert: "All fields required"
         end
@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
     def destroy
         authorize @review 
         @review.destroy 
-        redirect_to book_path(@review.book), success: "Your review was successfully deleted" 
+        redirect_to book_path(@review.book), notice: "Your review was successfully deleted" 
     end 
 
     private 

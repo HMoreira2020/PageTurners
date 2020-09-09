@@ -9,7 +9,7 @@
       <%= select_tag "genre", options_from_collection_for_select(@genres, "id", "name"), include_blank:  'Select Genre', class: "form-control" %>
       </div>
       <div class="input-group">  
-      <%= text_field_tag :query, nil, placeholder: 'Can\'t Find it? Search Google', class: "form-control" %>
+      <%= text_field_tag :query, nil, placeholder: 'Search Google', class: "form-control" %>
       </div>
 
       <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
@@ -47,5 +47,5 @@
     <%= render partial: 'table', locals: {book: b} %>
   <%end%>
 
-    <% if genre.
+
   <%== pagy_bootstrap_nav(@pagy) %>

@@ -1,12 +1,12 @@
 <h1>Table of Contents</h1>
-About the Project
-Built With
-Getting Started
-Installation
-Contributing
-License
-Contact
-Acknowledgements
+About the Project<br>
+Built With<br>
+Getting Started<br>
+Installation<br>
+Contributing<br>
+License<br>
+Contact<br>
+Acknowledgements<br>
 
 
 <h2>About the Project</h2> 
@@ -56,6 +56,7 @@ Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 
 <h2>License</h2>
+Distributed under the MIT License. https://opensource.org/licenses/MIT
 
 
 <h2>Contact</h2>

@@ -25,7 +25,7 @@ index.
 - [X] FIX DISPLAY OF SUCCESS ALERTS - why are these the only ones not styled? 
 - [X] UPDATE USER's PROFILE PIC 
 - [X] Blog 
-- [ ] Video walkthrough
+- [X] Video walkthrough
 - [X] Fix upload user image error that happens on signup with image 
 
 future goals 
@@ -34,7 +34,6 @@ read list displays with count of books
 rank users on most books read 
 rank users on most books reviewed 
 
-FIX BOOKS table to render ratings based on pageturners, not google.  only display google if no pageturners reviews
 
 
 

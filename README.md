@@ -1,4 +1,4 @@
-<h2>Table of Contents</h2>
+<h1>Table of Contents</h1>
 About the Project
 Built With
 Getting Started

@@ -41,7 +41,7 @@
                 </div>
             </h3>
             <div class="review-details">
-                Average Rating: <%= @book.pageturners_avg_rating %> | <%= @book.reviews.count %> reviews<br> 
+                Average Rating: <%= @book.find_average_rating %> | <%= @book.reviews.count %> reviews<br> 
             </div>
                     <% @book.reviews.each do |review| %>
                         <div class="review">

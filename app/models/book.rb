@@ -19,11 +19,16 @@ class Book < ApplicationRecord
         search.blank? ? self.all : self.all.where("lower(title) LIKE ? or lower(author) LIKE ?", "%#{search}%", "%#{search}%")
     end 
 
+    def find_average_rating
+        self.reviews == [] ? self.average_rating : self.pageturners_avg_rating 
+    end 
+
+
     def pageturners_avg_rating 
         self.reviews.average(:stars).to_f.round(2) 
     end 
  
-    def already_on_list?(list) 
+    def already_on_list?(list) #call book.already_on_list(@list)
         list.books.include?(self) 
     end 
 

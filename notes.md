@@ -22,7 +22,7 @@ index.
 - [x] LIMIT BOOKS PER PAGE on BOOKS INDEX and where necessary
 - [x] GET USER IMAGE WORKING TO DISPLAY 
 
-- [ ] FIX DISPLAY OF SUCCESS ALERTS - why are these the only ones not styled? 
+- [X] FIX DISPLAY OF SUCCESS ALERTS - why are these the only ones not styled? 
 - [X] UPDATE USER's PROFILE PIC 
 - [X] Blog 
 - [ ] Video walkthrough

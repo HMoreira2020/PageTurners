@@ -8,13 +8,8 @@
   <%= link_to book.genre.name, genre_path(book.genre) %>
   <%end%></td>
   <td><%= truncate(book.synopsis, length: 300) %></td>
-  <td><%= book.average_rating %></td>
-
-  <td><%if book.reviews %>
-  <%= stars(book.pageturners_avg_rating) %>
-    <%else%> 
-    NO REVIEWS HAVE BEEN WRITTEN
-    <%end%></td>
+  <td><%= book.find_average_rating %></td>
+  <td><%= stars(book.find_average_rating) %></td>
   <td><%= link_to "Write a Review", new_book_review_path(book), class: "btn btn-primary"  %></td>
   <td><%= link_to "Add to List", book_path(book), class: "btn btn-primary"  %></td>
 
